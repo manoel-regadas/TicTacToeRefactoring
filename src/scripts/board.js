@@ -1,15 +1,21 @@
 class Board {
-    constructor(area){
-        this._area = area;
+    constructor(location, squares){
+        this._location = location;
+        this._squares = squares;
     }
-    get area(){
+    get location(){
+        return this._location;
+    }
+    get squares(){
         return this._area;
     }
-    blocks(){
-        let blocks = [];
-        this._area.forEach(element => {blocks.push({block: element, isClicked: false});
-         });
-        return blocks;
+    render(){
+        let arrLi = [];
+        for(let i = 0; i <= this._squares; i++){
+            arrLi.push(`<li class="area" data-area="${i}"></li>`);
+        }
+        const li = arrLi.join(' ')
+        this.location.innerHTML = `<ul class="board">${li}</ul>`;   
     }
 }
 

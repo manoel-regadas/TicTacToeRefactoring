@@ -15,28 +15,29 @@ const isTrue = (arrayOne, arraytwo) => {
 
 const ticTacToe = () => {
     //Board
-        const place = document.querySelector('.border-container');
-        const gameArea = new Board(place, 8);
-        gameArea.render()
+    const place = document.querySelector('.border-container');
+    const gameArea = new Board(place, 8);
+    gameArea.render()
+    
+    const blocks = document.querySelectorAll('.area')  
+    let turnCount = blocks.length;   
+    console.log(blocks.dataSet('1'))
 
-        
-    // const possibilities = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-    // let turnCount = blocks.length;
-
+    const possibilities = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];    
+    
     // const playerOne = new Player('Manoel', false); 
-
     // console.log(playerOne.play());
    
     
 
-    // const players = {
-    //     firstPlayer: {isPlaying: true, marks:[],},
-    //     secondPlayer: {isPlaying: false, marks:[],},
-    // };
+    const players = {
+        firstPlayer: {isPlaying: true, marks:[],},
+        secondPlayer: {isPlaying: false, marks:[],},
+    };
 
  
     // const play = blocks.forEach(element => {
-    //     element.block.addEventListener('click', () => {
+    //     element.dataset.addEventListener('click', () => {
     //         turnCount-- 
             
     //         if(players.firstPlayer.isPlaying && !element.isClicked){

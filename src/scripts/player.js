@@ -24,6 +24,9 @@ class Player {
             return this._isPlaying = true;
         }
     }
+    moviments(){
+        
+    }
 };
 
 

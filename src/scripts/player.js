@@ -17,15 +17,15 @@ class Player {
     get potuation(){
         return this._potuation;
     }
+    set isPlaying(isPlaying){
+        return this._isPlaying = isPlaying; 
+    }
     play(){
         if(this._isPlaying){
             return this._isPlaying = false;
         } else {
             return this._isPlaying = true;
         }
-    }
-    moviments(){
-        
     }
 };
 

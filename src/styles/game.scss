@@ -1,16 +1,19 @@
 .wrapper{
-    height:100%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height:auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .left-colunm{
+    .ticTacToe{
         width: 100%;
         .title{
             font-family: 'Be Vietnam', sans-serif;
             font-size: 7em; 
             color: black;
             text-align: center;
-            padding: 5% 5%;
+            padding: 3% 3%;
             span{
                 font-size: 0.2em;
                 font-weight:bold;
@@ -20,8 +23,9 @@
 
         }
     }
-    .right-colunm{
+    .boardGame{
         width:100%;
+        padding: 3% 3%;
         .border-container{
             display: flex;
             justify-content: center;
@@ -36,8 +40,8 @@
                 grid-template-columns: auto auto auto;
                 padding: 10px;
                 .area{
-                    min-width: 200px;
-                    min-height: 200px;
+                    min-width: 150px;
+                    min-height: 150px;
                     font-size: 30px;
                     text-align: center;
                     box-sizing: border-box;

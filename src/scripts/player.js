@@ -27,6 +27,26 @@ class Player {
             return this._isPlaying = true;
         }
     }
+    modal(){
+        this._potuation++
+        const bodyPage = document.querySelector('.wrapper');
+        const test = `<div class="modal">
+                                <article>
+                                <h2>${this._player} wins!</h2>
+                                <div class="modal__button">continue</div>
+                                </article>
+                            </div>`;
+        
+        bodyPage.innerHTML += test                   
+        
+        const modal = document.querySelector('.modal')                     
+        const modalButton = document.querySelector('.modal__button');
+        
+        modalButton.onclick = () => {
+            modal.parentNode.removeChild(modal)
+        } 
+        this._moviments = [];
+    }
 };
 
 

@@ -1,19 +1,20 @@
 .wrapper{
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    height:auto;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: #2d3436;
+    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
     .ticTacToe{
         width: 100%;
         .title{
-            font-family: 'Be Vietnam', sans-serif;
+            font-family: $mainFont;
             font-size: 7em; 
-            color: black;
             text-align: center;
-            padding: 3% 3%;
+            padding: 3% 3% 5%;
+            color:$grayColor;
             span{
                 font-size: 0.2em;
                 font-weight:bold;
@@ -25,7 +26,6 @@
     }
     .boardGame{
         width:100%;
-        padding: 3% 3%;
         .border-container{
             display: flex;
             justify-content: center;
@@ -50,33 +50,33 @@
                     align-items: center;
                 }
                 [data-area="0"]{
-                    border-bottom:solid 3px black;
-                    border-right:solid 3px black ;
+                    border-bottom:$border;
+                    border-right:$border ;
                 }
                 [data-area="1"]{
-                    border-bottom:solid 3px black;
-                    border-right:solid 3px black ;
+                    border-bottom:$border;
+                    border-right:$border ;
                 }
                 [data-area="2"]{
-                    border-bottom:solid 3px black;
+                    border-bottom:$border;
                 }
                 [data-area="3"]{
-                    border-bottom:solid 3px black;
-                    border-right:solid 3px black ;
+                    border-bottom:$border;
+                    border-right:$border ;
                 }
                 [data-area="4"]{
-                    border-bottom:solid 3px black;
-                    border-right:solid 3px black ;
+                    border-bottom:$border;
+                    border-right:$border ;
                 }
                 [data-area="5"]{
-                    border-bottom:solid 3px black;
+                    border-bottom:$border;
                 
                 }
                 [data-area="6"]{
-                    border-right:solid 3px black ;
+                    border-right:$border ;
                 }
                 [data-area="7"]{
-                    border-right:solid 3px black ;
+                    border-right:$border ;
                 }
                 [data-area="8"]{
                 
@@ -84,7 +84,39 @@
             }
         }
     }
-    
+    .modal{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0,0,0,0.8);
+        article{     
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: $grayColor;
+            min-width: 300px;
+            max-width: 450px;
+            width: 40%;
+            height: 22%;
+            h2{
+                font-family: $mainFont;
+                font-size: 1.5em; 
+                text-align: center;
+            }
+            .modal__button{
+                font-family: $mainFont;
+                padding: 3% 4%;
+                margin-top: 30px;
+                background-color: #2d3436;
+                color: $grayColor;
+                cursor: pointer;
+            }
+        }    
+    }
 }
 
 .xMark{
@@ -94,10 +126,11 @@
 }
 .xMark::before{
     content: '+';
-    font-size: 9em;
-    color: black;
-    transform: rotate(45deg);
+    font-size: 7em;
+    color: #d8d8d8;
+    transform: rotate(45deg);   
     position: absolute;
+    pointer-events: none
 }
 
 .oMark{
@@ -107,7 +140,10 @@
 }
 .oMark::before{
     content: 'O';
-    font-size: 5em;
-    color: black;
+    font-size: 4em;
+    color: #d8d8d8;
     font-weight: 700;
-    position: absolute;}
+    position: absolute;
+    pointer-events: none
+}
+

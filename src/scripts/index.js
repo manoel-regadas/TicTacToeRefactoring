@@ -1,6 +1,6 @@
 import '../styles/index.scss';
 import Board from './board';
-import NewPlayer from './newPlayer';
+import Player from './player';
 
 const isTrue = (arrayOne, arraytwo) => {
     let arrayCount = [];
@@ -24,8 +24,8 @@ const ticTacToe = () => {
     
     const possibilities = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];    
 
-    const playerOne = new NewPlayer('Manoel', true);
-    const playerTwo = new NewPlayer('Fulano', false);
+    const playerOne = new Player('Manoel', true);
+    const playerTwo = new Player('Fulano', false);
     
  
     const play = blocks.forEach(element => {
@@ -41,7 +41,8 @@ const ticTacToe = () => {
                 if(turnCount <= 5){
                   var win = possibilities.some(el => isTrue(el, playerOne.moviments));
                   if(win){
-                    window.alert('playerOne ganhou!')
+                   playerOne.modal()
+                   return gameArea.reset()
                   } 
                 }
 
@@ -54,7 +55,8 @@ const ticTacToe = () => {
                 if(turnCount <= 5){
                   var win = possibilities.some(el => isTrue(el, playerTwo.moviments));
                   if(win){
-                    window.alert('playerTwo ganhou!')
+                    playerTwo.modal()
+                    return gameArea.reset()
                   } 
                 }
             }

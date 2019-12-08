@@ -2,10 +2,11 @@
 html, body{
   width: 100%;
   height: 100%;
-  /* background-image: linear-gradient(120deg, #fdfbfb 0%, #ededed 100%); */
+  //background-image: linear-gradient(120deg, #fdfbfb 0%, #ededed 100%); 
 };
 
 
+@import './mixings.scss';
 @import './game.scss';
 
 

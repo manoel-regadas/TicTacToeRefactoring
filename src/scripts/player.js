@@ -37,14 +37,15 @@ class Player {
                                 </article>
                             </div>`;
         
-        bodyPage.innerHTML += test                   
-        
-        const modal = document.querySelector('.modal')                     
-        const modalButton = document.querySelector('.modal__button');
-        
-        modalButton.onclick = () => {
-            modal.parentNode.removeChild(modal)
-        } 
+        setTimeout( () => {
+            bodyPage.innerHTML += test
+            const modal = document.querySelector('.modal')                     
+            const modalButton = document.querySelector('.modal__button');
+            
+            modalButton.onclick = () => {
+                modal.parentNode.removeChild(modal)
+            } 
+        }, 100)                   
         this._moviments = [];
     }
 };

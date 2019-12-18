@@ -27,41 +27,45 @@ const ticTacToe = () => {
     const playerOne = new Player('Manoel', true);
     const playerTwo = new Player('Fulano', false);
     
- 
-    const play = blocks.forEach(element => {
-        element.addEventListener('click', () => {
-            turnCount-- 
-            
-            if(playerOne.isPlaying && !element.classList.contains('done')){
-                playerOne.moviments.push(element.dataset['area']);
-                element.classList.add('xMark', 'done');
-                playerOne.isPlaying = false;
-                playerTwo.isPlaying = true
-                
-                if(turnCount <= 5){
-                  var win = possibilities.some(el => isTrue(el, playerOne.moviments));
-                  if(win){
-                   playerOne.modal()
-                   return gameArea.reset()
-                  } 
-                }
 
-            } else if(playerTwo.isPlaying && !element.classList.contains('done')){
-                playerTwo.moviments.push(element.dataset['area']);
-                element.classList.add('oMark', 'done');
-                playerTwo.isPlaying = false;
-                playerOne.isPlaying = true       
-                
-                if(turnCount <= 5){
-                  var win = possibilities.some(el => isTrue(el, playerTwo.moviments));
-                  if(win){
-                    playerTwo.modal()
-                    return gameArea.reset()
-                  } 
-                }
+    const gamePlay = () => { 
+      blocks.forEach(element => {
+      element.addEventListener('click', () => {
+      turnCount-- 
+            
+        if(playerOne.isPlaying && !element.classList.contains('done')){
+            playerOne.moviments.push(element.dataset['area']);
+            element.classList.add('xMark', 'done');
+            playerOne.isPlaying = false;
+            playerTwo.isPlaying = true
+            
+            if(turnCount <= 5){
+              var win = possibilities.some(el => isTrue(el, playerOne.moviments));
+              if(win){
+                playerOne.modal()
+                gameArea.reset()
+                location.reload()
+              } 
             }
-        })
+
+        } else if(playerTwo.isPlaying && !element.classList.contains('done')){
+            playerTwo.moviments.push(element.dataset['area']);
+            element.classList.add('oMark', 'done');
+            playerTwo.isPlaying = false;
+            playerOne.isPlaying = true       
+            
+            if(turnCount <= 5){
+              var win = possibilities.some(el => isTrue(el, playerTwo.moviments));
+              if(win){
+                playerTwo.modal()
+                gameArea.reset()
+                location.reload()
+              } 
+            }
+          }
+      })
     });
-    
+  }
+  gamePlay()
 };
 ticTacToe();

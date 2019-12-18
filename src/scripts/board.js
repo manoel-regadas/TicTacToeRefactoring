@@ -21,7 +21,6 @@ class Board {
     }
     reset(){
         if(this._isRendered === true){
-            console.log('ola')
             this._isRendered = false;
             this._location.innerHTML = ' ';
             this.render();

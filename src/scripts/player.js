@@ -1,24 +1,18 @@
 class Player {
-    constructor(player, isPlaying){
+    constructor(player){
         this._player = player;
-        this._isPlaying = isPlaying;
         this._moviments = [];
         this._potuation = 0;
     }
-    get player(){
-        return this._player;
+    set moviments(value){
+        this._moviments = value;
     }
-    get isPlaying(){
-        return this._isPlaying;
-    }
+
     get moviments(){
         return this._moviments;
     }
     get potuation(){
         return this._potuation;
-    }
-    set isPlaying(isPlaying){
-        return this._isPlaying = isPlaying; 
     }
     play(){
         if(this._isPlaying){

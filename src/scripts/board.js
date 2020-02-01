@@ -35,7 +35,7 @@ class Board {
 
     reset(){
         //this._isRendered = false;
-        this._location.innerHTML = ' ';
+        this._location.innerHTML = ' '; 
         this._turnCount = 9;
         this._playerOne.moviments = [];
         this._playerTwo.moviments = [];

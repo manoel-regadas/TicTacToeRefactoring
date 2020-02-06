@@ -3,67 +3,100 @@ import Player from './player';
 
 
 class GamePlay {
-    constructor(place, playerOne, playerTwo){
-        this._board = new Board(place)
-        this._playerOne = new Player(playerOne)
-        this._playerTwo = new Player(playerTwo)
-        this.playerTurn = true;
-        this._possibilities = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-    }
-    get board(){
-        return this._board
-    }
-    
-    get playerOne(){
-        return this._playerOne
-    }
-    
-    get playerTwo(){
-        return this._playerTwo
-    }
-    
-    get getAllBlocks(){
-        return this._board.blocks
-    }
+   constructor(place, playerOne, playerTwo) {
+      this._board = new Board(place)
+      this._playerOne = new Player(playerOne)
+      this._playerTwo = new Player(playerTwo)
+      this.playerTurn = true;
+      this._possibilities = [
+         [0, 1, 2],
+         [3, 4, 5],
+         [6, 7, 8],
+         [0, 3, 6],
+         [1, 4, 7],
+         [2, 5, 8],
+         [0, 4, 8],
+         [2, 4, 6]
+      ];
+   }
+   get wonPossibilities() {
+      return this._possibilities;
+   }
 
-    get allMoves(){
-         return [this.playerOne.moves, this.playerTwo.moves]
-    }
+   get board() {
+      return this._board
+   }
 
-    init(){
-        this.board.place.innerHTML = ' ';
-        this.board.render();
-        this.events()
-    }
+   get playerOne() {
+      return this._playerOne
+   }
 
-    events(){
-        
-        this.getAllBlocks.forEach(element => {
-            element.addEventListener('click', this.play.bind(this))
-        });
+   get playerTwo() {
+      return this._playerTwo
+   }
 
+   get getAllBlocks() {
+      return this._board.blocks
+   }
 
-    }
+   init() {
+      this.board.render();
+      this.events()
+      console.log(this.playerOne.moves)
+   }
 
-    play({currentTarget}){
-        if(this.playerTurn && !currentTarget.classList.contains('clicked')){
-            this.playerTurn = false
-            this.playerOne.moves.push(parseInt(currentTarget.dataset.area))
-            currentTarget.classList.add('xMark', 'clicked')
-            
-            if(this.allMoves[0].length >= 3){
-                this.allMoves[0].sort()
-                    
+   events() {
+      this.getAllBlocks.forEach(element => {
+         element.addEventListener('click', this.play.bind(this))
+      });
+
+   }
+
+   play({currentTarget}) {
+      if (this.playerTurn && !currentTarget.classList.contains('clicked')) {
+         this.playerTurn = false
+         this.playerOne.moves.push(parseInt(currentTarget.dataset.area))
+         currentTarget.classList.add('xMark', 'clicked')
+
+         if (this.playerOne.moves.length >= 3) {
+            let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerOne.moves));
+            if (win) {
+               this.finish()
+               this.init()
+               this.playerTurn = true
             }
-        } 
-        
-        else if(!this.playerTurn && !currentTarget.classList.contains('clicked')) {
-            this.playerTurn = true
-            this.playerTwo.moves.push(parseInt(currentTarget.dataset.area))
-            currentTarget.classList.add('oMark', 'clicked')
+         }
+      } else if (!this.playerTurn && !currentTarget.classList.contains('clicked')) {
+         this.playerTurn = true
+         this.playerTwo.moves.push(parseInt(currentTarget.dataset.area))
+         currentTarget.classList.add('oMark', 'clicked')
 
-        }
-    }
+         if (this.playerTwo.moves.length >= 3) {
+            let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerTwo.moves));
+            if (win) {
+               this.finish()
+               this.init()
+               this.playerTurn = true
+            }
+         }
+      }
+   }
+   checkWinner(arrayOne, arraytwo) {
+      let arrayCount = [];
+      for (var i = 0; i < arraytwo.length; i++) {
+         let arrayTest = arrayOne.some((element) => element === arraytwo[i]);
+         if (arrayTest) {
+            arrayCount.push(true);
+         }
+      };
+      return arrayCount.length < 3 ? false : true;
+   }
+
+   finish(){
+      this.playerOne.moves = 1;
+      this.playerTwo.moves = 1;
+      this.board.place.innerHTML = ' ';
+   }
 }
 
 export default GamePlay;

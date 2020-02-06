@@ -20,10 +20,10 @@ class Board {
         this._place.innerHTML = ' '; 
         for(let i = 0; i < 9; i++){
             this._place.insertAdjacentHTML('beforeend', 
-                `<li class="area" data-area="${i}"></li>`
+                `<li class="ticTacToe__area" data-area="${i}"></li>`
             )
         } 
-        this._blocks = document.querySelectorAll('.area')
+        this._blocks = document.querySelectorAll('.ticTacToe__area')
     }
 }
 

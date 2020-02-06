@@ -1,89 +1,106 @@
-.wrapper{
+.ticTacToe{
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #2d3436;
-    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
-    .ticTacToe{
-        width: 100%;
-        .title{
-            font-family: $mainFont;
-            font-size: 7em; 
-            text-align: center;
-            padding: 3% 3% 5%;
-            color:$grayColor;
-            span{
-                font-size: 0.2em;
-                font-weight:bold;
-                height: 100%;
-                padding-left: 2%s;
-            }
+    background-color: $neuColor1;
+    
+    &__menu{
+        width: 100%; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
 
-        }
-    }
-    .boardGame{
-        width:100%;
-        .border-container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* background-color: red;*/
+    &__title{
+        font-family: $mainFont;
+        font-size: 7em; 
+        text-align: center;
+        padding: 3% 3% 5%;
+        color:$grayColor;
+        span{
+            font-size: 0.2em;
+            font-weight:bold;
             height: 100%;
-            width: auto;
-            position: relative;
-            display: flex;  
-            .board{
-                display: grid;
-                grid-template-columns: auto auto auto;
-                padding: 10px;
-                .area{
-                    min-width: 150px;
-                    min-height: 150px;
-                    font-size: 30px;
-                    text-align: center;
-                    box-sizing: border-box;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                [data-area="0"]{
-                    border-bottom:$border;
-                    border-right:$border ;
-                }
-                [data-area="1"]{
-                    border-bottom:$border;
-                    border-right:$border ;
-                }
-                [data-area="2"]{
-                    border-bottom:$border;
-                }
-                [data-area="3"]{
-                    border-bottom:$border;
-                    border-right:$border ;
-                }
-                [data-area="4"]{
-                    border-bottom:$border;
-                    border-right:$border ;
-                }
-                [data-area="5"]{
-                    border-bottom:$border;
-                
-                }
-                [data-area="6"]{
-                    border-right:$border ;
-                }
-                [data-area="7"]{
-                    border-right:$border ;
-                }
-                [data-area="8"]{
-                
-                } 
-            }
+            padding-left: 2%s;
         }
     }
+
+    &__players{
+        width: 100%;
+        max-width: 560px;
+        min-height: 280px;
+        padding: 32px;
+
+    }
+
+    &__boardGame{
+        width:100%;
+    }
+
+    &__boardContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: auto;
+        position: relative;
+        display: flex;  
+    }
+
+    &__board{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 10px;
+    }
+
+    &__area{
+        min-width: 150px;
+        min-height: 150px;
+        font-size: 30px;
+        text-align: center;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    [data-area="0"]{
+        border-bottom:$border;
+        border-right:$border ;
+    }
+    [data-area="1"]{
+        border-bottom:$border;
+        border-right:$border ;
+    }
+    [data-area="2"]{
+        border-bottom:$border;
+    }
+    [data-area="3"]{
+        border-bottom:$border;
+        border-right:$border ;
+    }
+    [data-area="4"]{
+        border-bottom:$border;
+        border-right:$border ;
+    }
+    [data-area="5"]{
+        border-bottom:$border;
+    
+    }
+    [data-area="6"]{
+        border-right:$border ;
+    }
+    [data-area="7"]{
+        border-right:$border ;
+    }
+    [data-area="8"]{
+    
+    } 
+
     .modal{
         position: absolute;
         width: 100%;

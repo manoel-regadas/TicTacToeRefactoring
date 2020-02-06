@@ -39,13 +39,17 @@ class GamePlay {
       return this._board.blocks
    }
 
-   init() {
-      this.board.render();
-      this.events()
-      console.log(this.playerOne.moves)
+   init(){
+      
    }
 
-   events() {
+   start() {
+      this.board.render();
+      this.gamePlayeEvents()
+      
+   }
+
+   gamePlayeEvents() {
       this.getAllBlocks.forEach(element => {
          element.addEventListener('click', this.play.bind(this))
       });
@@ -64,7 +68,7 @@ class GamePlay {
                this.playerOne.point()
                console.log(this.playerOne.name, this.playerOne.points)
                this.finish()
-               this.init()
+               this.start()
                this.playerTurn = true
             }
          }
@@ -79,7 +83,7 @@ class GamePlay {
                this.playerTwo.point()
                console.log(this.playerTwo.name, this.playerTwo.points)
                this.finish()
-               this.init()
+               this.start()
                this.playerTurn = true
             }
          }

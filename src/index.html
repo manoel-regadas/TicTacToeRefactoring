@@ -7,13 +7,28 @@
   <title>TicTacToe</title>
 </head>
 <body>
-  <section class="wrapper">
-      <div class="ticTacToe">
-          <h1 class="title">tic tac toe<span>o x o</span></h1>
+  <section class="ticTacToe">
+      <div class="ticTacToe__menu">
+          <h1 class="ticTacToe__title">tic tac toe<span>o x o</span></h1>
+          <article class="ticTacToe__players">
+            
+            <p class="mediumText">get ready players for the ultimate game</p>
+            
+            <label for="playerOne">
+              <input type="text" name="playerOne" placeholder="player one">
+            </label>
+            
+            <label for="playerOne">
+              <input type="text" name="playerTwo" placeholder="player two">
+            </label>
+          </article>
+
+          <small class="smallText"></small>
+
       </div>
-      <div class="boardGame">
-          <div class="border-container">
-            <div class="board"></div>
+      <div class="ticTacToe__boardGame">
+          <div class="ticTacToe__boardContainer">
+            <div class="ticTacToe__board"></div>
           </div>  
       </div>
   </section>

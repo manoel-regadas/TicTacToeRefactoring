@@ -61,6 +61,8 @@ class GamePlay {
          if (this.playerOne.moves.length >= 3) {
             let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerOne.moves));
             if (win) {
+               this.playerOne.point()
+               console.log(this.playerOne.name, this.playerOne.points)
                this.finish()
                this.init()
                this.playerTurn = true
@@ -74,6 +76,8 @@ class GamePlay {
          if (this.playerTwo.moves.length >= 3) {
             let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerTwo.moves));
             if (win) {
+               this.playerTwo.point()
+               console.log(this.playerTwo.name, this.playerTwo.points)
                this.finish()
                this.init()
                this.playerTurn = true
@@ -93,8 +97,8 @@ class GamePlay {
    }
 
    finish(){
-      this.playerOne.moves = 1;
-      this.playerTwo.moves = 1;
+      this.playerOne.moves = [];
+      this.playerTwo.moves = [];
       this.board.place.innerHTML = ' ';
    }
 }

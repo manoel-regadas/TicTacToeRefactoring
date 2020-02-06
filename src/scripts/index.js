@@ -4,7 +4,7 @@ import GamePlay from './gameplay';
 const place = document.querySelector('.board')
 
 
-const game = new GamePlay(place, 'manoel', 'Lola');
+const game = new GamePlay(place, 'manoel', 'bruno');
 game.init()
 
 

@@ -4,6 +4,11 @@ class Player{
         this._points = 0;
         this._moves = [];
     }
+
+    get name(){
+        return this._name
+    }
+
     get points(){
         return this._points
     }
@@ -17,7 +22,11 @@ class Player{
     }
 
     set moves(value){
-        this._moves.push(value)
+        return this._moves = value
+    }
+
+    point(){
+        this.points++
     }
 }
 

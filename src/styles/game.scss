@@ -34,6 +34,9 @@
         max-width: 560px;
         min-height: 280px;
         padding: 32px;
+        @include boxShadowWhite;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
 
     }
 

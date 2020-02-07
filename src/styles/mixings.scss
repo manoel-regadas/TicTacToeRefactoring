@@ -58,6 +58,12 @@ $mainFont:'Roboto', sans-serif;
 
 //boxSadow:
 @mixin boxShadowWhite {
+    box-shadow: 11px 13px 20px 3px rgba(55, 84, 170, 0.15), -7px -10px 40px 5px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
+
+@mixin boxShadowWhiteCliked {
+    box-shadow: 5px 5px 9px rgba(55, 84, 170, 0.03), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
+
+@mixin boxShadowWhiteInput {
     box-shadow:5px 5px 10px rgba(55, 84, 170, 0.10), inset 5px 5px 10px rgba(55, 84, 170, 0.10), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
 
 

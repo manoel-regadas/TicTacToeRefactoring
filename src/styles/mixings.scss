@@ -1,24 +1,64 @@
 //colors
-$neuColor1: #F1F3F6;
-$neuColor2: #27282C;
+$color1:#EDF0F3;
+$color2:#424348;
+$color3:#4CD6D6;
+//
+$light1: #FFFF;
+$light2: #4C4D53;
+$light3: #57F6F6;
+//
+$shadow1: #3754AA ;
+$shadow2: #38393D;
+$shadow3: #41B6B6;
+//
+$labelText: #A3B1C6;
 
-$Color1:#4CD6D6;
+
+//font
+$mainFont:'Roboto', sans-serif;
+
+//text
+@mixin text-XL ($color){
+    color: $color;
+    font-family: $mainFont;
+    font-size:70px;
+   
+}
+
+@mixin text-L ($color){
+    color: $color;
+    font-family: $mainFont;
+    font-size:20px;
+    
+}
+
+@mixin text-M ($color){
+    color: $color;
+    font-family: $mainFont;
+    font-size:18px;
+
+}
+
+@mixin text-S ($color){
+    color: $color;
+    font-family: $mainFont;
+    font-size:20px;
+
+}
+
+@mixin text-XS ($color){
+    color: $color;
+    font-family: $mainFont;
+    font-size:14px;
+
+}
+
+
+
 
 //boxSadow:
 @mixin boxShadowWhite {
-    box-shadow: 30px 30px 80px rgba(55, 84, 170, 0.1), -30px -30px 80px #FFFFFF, inset 4px 4px 80px rgba(255, 255, 255, 0.5);
-}
+    box-shadow:20px 20px 40px rgba(55, 84, 170, 0.15), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
 
 
-
-
-$mainFont:'Be Vietnam', sans-serif;
-
-$grayColor: #b3b3b3;
-
-$border: solid 3px $grayColor;
-
-@mixin backgroundGradiente {
-    background-color: #2d3436;
-    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
-}
+$border: solid 3px $shadow2;

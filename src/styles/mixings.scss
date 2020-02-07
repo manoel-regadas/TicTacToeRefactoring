@@ -58,7 +58,7 @@ $mainFont:'Roboto', sans-serif;
 
 //boxSadow:
 @mixin boxShadowWhite {
-    box-shadow:20px 20px 40px rgba(55, 84, 170, 0.15), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
+    box-shadow:5px 5px 10px rgba(55, 84, 170, 0.10), inset 5px 5px 10px rgba(55, 84, 170, 0.10), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
 
 
 $border: solid 3px $shadow2;

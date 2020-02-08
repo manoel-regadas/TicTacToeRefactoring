@@ -1,10 +1,17 @@
 import '../styles/index.scss';
-import GamePlay from './gameplay';
-
-const place = document.querySelector('.ticTacToe__board')
+import Menu from './menu'
 
 
-const game = new GamePlay(place, 'manoel', 'bruno');
+const playerOneName = document.querySelector('#playerOneInputName');
+const playerTwoName = document.querySelector('#playerOneInputName');
+const toggle = document.querySelector('.ticTacToe__toggle');
+const start = document.querySelector('.ticTacToe__button');
+const place = document.querySelector('.ticTacToe__board');
+
+const menu = new Menu (playerOneName, playerTwoName, toggle, start, place)
+
+menu.events()
+
 
 //game.start()
 

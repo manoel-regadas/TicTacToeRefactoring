@@ -1,3 +1,7 @@
+::placeholder{
+    color:$labelText;
+}
+
 .ticTacToe{
     height: 100%;
     width: 100%;
@@ -20,6 +24,7 @@
         .circleHeader, .crossHeader{
             width: 150px;
             height: 150px;
+            @include boxShadowWhiteSVG;
         }
     }
 
@@ -27,8 +32,22 @@
         @include text-L($color3); 
         text-align:center;
         margin-top: 23px;
-        max-width: 277px;
+        width:100%;
+        max-width: 280px;
+        min-height:40px;
         text-transform: uppercase;
+    
+        span{
+            animation: showSpan 1s forwards;
+            animation-delay: 1.3s;
+            opacity:0;
+            display:inline-block;
+
+            @keyframes showSpan {
+                0% {opacity:0;transform:translateY(25px); color:blue;}
+                100% {opacity:1;transform:translateY(0px); color:$color3;}
+            }
+        }
     }
 
     &__inputs{
@@ -37,10 +56,34 @@
         margin-top: 23px;
         width: 100%;
         
+        animation: showInputs 2s forwards;
+        animation-delay: 2.2s;
+        opacity:0;
+        
+        @keyframes showInputs {
+            0% {opacity:0; transform:translateY(15px);}
+            100% {opacity:1;transform:translateY(0px)}
+        }
+        
     }
     
     &__inputLabel{
+        position:relative;
        
+        &:after{
+           content:'';
+           width: 230px;
+            height: 45px;
+            border: 3px solid #F5F7FA;
+            opacity:0.8;
+            border-radius: 100px;
+            background-color: transparent;
+            pointer-events: none;   
+            position:absolute;
+            z-index:10;
+            box-sizing: border-box;
+            left:0;
+       }
     }
 
     &__inputName{
@@ -54,24 +97,45 @@
         text-align: center;
         @include text-XS ($labelText);
         font-weight:100;
-
+        
+        
+        
     }
 
     &__button{
         padding: 20px 42px;
         text-transform: uppercase;
         @include text-L ($color3);
-        @include boxShadowWhite;
         border-radius: 100px;
         cursor: pointer;
         margin-top: 40px;
         box-sizing: border-box;
         background-color: $color1;
+        @include boxShadowWhite;
+        animation: upShadowButton 5.3s ease-out;
+
+        @keyframes upShadowButton {
+            0%{@include boxShadowWhiteInit}
+            60%{@include boxShadowWhiteInit}
+            100% {@include boxShadowWhite}
+        }
 
         &:active{
             transform:scale(0.98);
-            @include boxShadowWhiteCliked;
+            @include boxShadowWhiteCliked; 
           }
+        
+          p{
+            animation: showBTNText 3s ease-out forwards;
+            animation-delay: 1.8s;
+            opacity:0;
+            @keyframes showBTNText {
+                0%{}
+                60%{opacity:0;}
+                100% {opacity:1.0;}
+            }
+        }
+
     }
 
     &__players{
@@ -82,8 +146,14 @@
         align-items: center;
         flex-direction: column;
         padding: 32px;
-        @include boxShadowWhite;
         border-radius: 10px;
+        animation: upShadow 2s ease-out forwards;
+
+        @keyframes upShadow {
+            0%{@include boxShadowWhiteInit}
+            30%{@include boxShadowWhiteInit}
+            100% {@include boxShadowWhite}
+        }
 
     }
 
@@ -91,8 +161,21 @@
         text-align: center;
         @include text-XS ($labelText);
         font-weight:100;
-        width: 220px;
+        width: 223px;
+        height:30px;
         margin-top: 50px;
+
+        span{
+            animation: showSmall 1s forwards;
+            animation-delay: 4s;
+            opacity:0;
+            display:inline-block;
+
+            @keyframes showSmall {
+                0% {opacity:0;transform:translateY(-3px); color:blue;}
+                100% {opacity:1;transform:translateY(0px); color:$color3;}
+            }
+        }
     }
 
     &__toggle{
@@ -108,7 +191,7 @@
         cursor: pointer;
 
         &:after{
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-out;
             content: '';
             background-color: $color1;
             display: block;

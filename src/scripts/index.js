@@ -3,14 +3,13 @@ import Menu from './menu'
 
 
 const playerOneName = document.querySelector('#playerOneInputName');
-const playerTwoName = document.querySelector('#playerOneInputName');
-const toggle = document.querySelector('.ticTacToe__toggle');
-const start = document.querySelector('.ticTacToe__button');
+const playerTwoName = document.querySelector('#playerTwoInputName');
 const place = document.querySelector('.ticTacToe__board');
 
-const menu = new Menu (playerOneName, playerTwoName, toggle, start, place)
 
-menu.events()
+const menu = new Menu (playerOneName, playerTwoName, place)
+
+menu.init()
 
 
 //game.start()

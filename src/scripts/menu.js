@@ -51,14 +51,14 @@ class Menu{
         let splitText = value.innerHTML.split('');
         value.innerHTML = ' ';
         splitText.forEach((element, index) => {
-            setTimeout(()=>{
+            // setTimeout(()=>{
                 if(element === ' '){
                     element = '&nbsp'
                 }
                 value.insertAdjacentHTML('beforeend', 
                     `<span>${element}</span>`
                 )
-            } , index * 20)
+            // } , index * 20)
             
         })
     } 

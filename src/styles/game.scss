@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     background-color: $color1;
-    
+
     
     &__menu{
         width: 100%; 
@@ -18,6 +18,7 @@
         flex-direction: column;
         align-items: center;
         background-color: $color1;
+
     }
 
     &__header{
@@ -36,15 +37,20 @@
         max-width: 280px;
         min-height:40px;
         text-transform: uppercase;
-    
+
         span{
             animation: showSpan 1s forwards;
-            animation-delay: 1.3s;
             opacity:0;
             display:inline-block;
 
+            @for $i from 1 through 1000{
+                &:nth-of-type(#{$i}){
+                    animation-delay: $i * 15ms;
+                }
+            }
+
             @keyframes showSpan {
-                0% {opacity:0;transform:translateY(25px); color:blue;}
+                0% {opacity:0;transform:translateY(10px); color:blue;}
                 100% {opacity:1;transform:translateY(0px); color:$color3;}
             }
         }
@@ -56,8 +62,7 @@
         margin-top: 23px;
         width: 100%;
         
-        animation: showInputs 2s forwards;
-        animation-delay: 2.2s;
+        animation: showInputs 2s forwards 2.2s;
         opacity:0;
         
         @keyframes showInputs {
@@ -149,6 +154,12 @@
         border-radius: 10px;
         animation: upShadow 2s ease-out forwards;
 
+        @for $i from 1 through 3{
+            &:nth-child(#{$i}){
+                background-color: black;
+            }
+        }
+
         @keyframes upShadow {
             0%{@include boxShadowWhiteInit}
             30%{@include boxShadowWhiteInit}
@@ -170,6 +181,12 @@
             animation-delay: 4s;
             opacity:0;
             display:inline-block;
+
+            @for $i from 1 through 1000{
+                &:nth-of-type(#{$i}){
+                    animation-delay: $i * 15ms;
+                }
+            }
 
             @keyframes showSmall {
                 0% {opacity:0;transform:translateY(-3px); color:blue;}

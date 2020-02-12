@@ -12,12 +12,13 @@ class Menu{
         this.place = place;
         this.title = document.querySelector('.ticTacToe__title')
         this.darkText = document.querySelector('.ticTacToe__smallText');
+        this.menuBox = document.querySelector('.ticTacToe__players')
     }
 
     init(){
         this.events()
         this.letteringAnimation(this.title)
-        this.letteringAnimation(this.darkText)
+        this.menuAnimationOrder()
     }
 
     events(){
@@ -44,25 +45,29 @@ class Menu{
             nameTwo = 'lazy to put the name Two'
         }
         this.gamePlay = new GamePlay(this.place, nameOne, nameTwo)
-        this.gamePlay.start()
+        //this.gamePlay.start()
+        console.log(this.menuBox)
+        this.menuBox.classList.add('close')
+        
     }
 
     letteringAnimation(value){
         let splitText = value.innerHTML.split('');
         value.innerHTML = ' ';
         splitText.forEach((element, index) => {
-            // setTimeout(()=>{
                 if(element === ' '){
                     element = '&nbsp'
                 }
-                value.insertAdjacentHTML('beforeend', 
-                    `<span>${element}</span>`
-                )
-            // } , index * 20)
+                value.insertAdjacentHTML('beforeend', `<span>${element}</span>`)
+
             
         })
     } 
-
+    menuAnimationOrder(){
+        setTimeout(()=>{
+            this.title.style.display = 'block'
+        }, 200)
+    }
 
 }
 

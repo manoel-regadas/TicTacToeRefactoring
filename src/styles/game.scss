@@ -23,19 +23,26 @@
     }
 
     &__header{
-        max-height:160px;
+        height:160px;
         width: 510px;
         display: flex;
-       // align-items: center;
         justify-content: space-around;
-        
+        align-items: flex-end;
         img{
-            height:150px ;
+            height: 216px;
+            position: relative;
+            top: 27px;
+        }
+        &.close{
+            transform:translate3d(0,-50px,0);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1.5s;
         }
     }
 
     &__players{
-        margin-top: 50px;
+        margin-top: 80px;
         width: 100%;
         max-width: 560px;
         min-height: 280px;
@@ -251,6 +258,8 @@
 
     &__boardGame{
         width:100%;
+        display: none;
+       
     }
 
     &__boardContainer{
@@ -266,12 +275,15 @@
     &__board{
         display: grid;
         grid-template-columns: auto auto auto;
-        padding: 10px;
+        width: 530px;
+        height: 530px;
+        background-image: url(/src/image/board.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-origin: border-box;
     }
 
     &__area{
-        min-width: 150px;
-        min-height: 150px;
         font-size: 30px;
         text-align: center;
         box-sizing: border-box;
@@ -281,33 +293,29 @@
     }
 
     [data-area="0"]{
-        border-bottom:$border;
-        border-right:$border ;
+
     }
     [data-area="1"]{
-        border-bottom:$border;
-        border-right:$border ;
+    
     }
     [data-area="2"]{
-        border-bottom:$border;
+    
     }
     [data-area="3"]{
-        border-bottom:$border;
-        border-right:$border ;
+    
     }
     [data-area="4"]{
-        border-bottom:$border;
-        border-right:$border ;
+      
     }
     [data-area="5"]{
-        border-bottom:$border;
+        
     
     }
     [data-area="6"]{
-        border-right:$border ;
+        
     }
     [data-area="7"]{
-        border-right:$border ;
+       
     }
     [data-area="8"]{
     
@@ -319,7 +327,7 @@
 .xMark{
     width: 100%;
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+
 }
 .xMark::before{
     content: '+';
@@ -331,15 +339,11 @@
 }
 
 .oMark{
-    width: 100%;
-    height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    width: 120px;
+    height: 120px;
 }
 .oMark::before{
-    content: 'O';
-    font-size: 4em;
-    color: #d8d8d8;
-    font-weight: 700;
+    content: url(/src/image/circle.svg);
     position: absolute;
     pointer-events: none
 }

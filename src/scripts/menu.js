@@ -14,6 +14,8 @@ class Menu{
         this.darkText = document.querySelector('.ticTacToe__smallText');
         this.menuBox = document.querySelector('.ticTacToe__players')
         this.footer = document.querySelector('.ticTacToe__footer')
+        this.header = document.querySelector('.ticTacToe__header')
+        this.boardGame = document.querySelector('.ticTacToe__boardGame')
     }
 
     init(){
@@ -40,17 +42,20 @@ class Menu{
         let nameTwo = this.playerTwoInput.value
         
         if(!this.playerOneInput.value){
-            nameOne = 'lazy to put the name One'
-        }
+            nameOne = 'lazy to put the name One'}
         if(!this.playerTwoInput.value){
-            nameTwo = 'lazy to put the name Two'
-        }
-        this.gamePlay = new GamePlay(this.place, nameOne, nameTwo)
-        //this.gamePlay.start()
+            nameTwo = 'lazy to put the name Two'}
+        this.gamePlay = new GamePlay(this.place, nameOne, nameTwo) 
+        
+        this.closeMenu() 
+       
+        setTimeout(()=>{
+            this.boardGame.style.display ='block'
+            this.gamePlay.start()
+        },1000)
 
-
-        this.menuBox.classList.add('close')
-        this.footer.classList.add('close')
+        
+        
     }
 
     letteringAnimation(value){
@@ -70,7 +75,16 @@ class Menu{
             this.title.style.display = 'block'
         }, 200)
     }
-
+    closeMenu(){
+        this.menuBox.classList.add('close')
+        this.footer.classList.add('close')
+        this.header.classList.add('close')
+        setTimeout(()=>{
+            this.menuBox.style.display = 'none'
+            this.footer.style.display = 'none'
+            this.header.style.display = 'none'
+        },1000)
+    }
 }
 
 export default Menu;

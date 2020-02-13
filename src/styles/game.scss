@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     background-color: $color1;
-    perspective: 500px;
+
     
     &__menu{
         width: 100%; 
@@ -19,7 +19,7 @@
         align-items: center;
         background-color: $color1;
         box-sizing: border-box;
-
+        perspective: 800px;
     }
 
     &__header{
@@ -48,15 +48,12 @@
         }
 
         &.close{
-            animation: menuOut 1s forwards;
-            @keyframes menuOut{
-                0%  {@include boxShadowWhite}
-                20% {@include boxShadowWhiteInit; transform: scaleZ(0) rotateX(0);}
-                70% {transform: scaleZ(2) rotateX(40deg) rotateY(0deg);}
-                80% {transform:scaleZ(2) rotateX(40deg)  translateY(0) scale(1.0); opacity: 1;}
-                100%{transform:scaleZ(2) rotateX(40deg)  translateY(-150px) scale(0.2); opacity: 0; visibility: hidden;}
+            animation: closeMenu;
+            @keyframes closeMenu{
+                0%{}
+                50%{}
+                100%{}
             }
-            
         }
 
     }
@@ -180,6 +177,13 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        
+        &.close{
+            // @include boxShadowWhiteInit;
+            // transform:scaleZ(7) rotateY(-70deg)translate3d(130vw, 0,0);
+            // opacity: 0;
+            // transition: all 1.5s;
+        }
     }
 
     &__smallText{

@@ -13,6 +13,7 @@ class Menu{
         this.title = document.querySelector('.ticTacToe__title')
         this.darkText = document.querySelector('.ticTacToe__smallText');
         this.menuBox = document.querySelector('.ticTacToe__players')
+        this.footer = document.querySelector('.ticTacToe__footer')
     }
 
     init(){
@@ -46,9 +47,10 @@ class Menu{
         }
         this.gamePlay = new GamePlay(this.place, nameOne, nameTwo)
         //this.gamePlay.start()
-        console.log(this.menuBox)
+
+
         this.menuBox.classList.add('close')
-        
+        this.footer.classList.add('close')
     }
 
     letteringAnimation(value){

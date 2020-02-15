@@ -18,11 +18,18 @@ $labelText: #A3B1C6;
 $mainFont:'Roboto', sans-serif;
 
 //text
-@mixin text-XL ($color){
+@mixin text-Giant ($color){
     color: $color;
     font-family: $mainFont;
     font-size:70px;
    
+}
+
+@mixin text-XL ($color){
+    color: $color;
+    font-family: $mainFont;
+    font-size:30px;
+    
 }
 
 @mixin text-L ($color){

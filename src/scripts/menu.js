@@ -1,27 +1,29 @@
 import GamePlay from './gameplay';
-const place = document.querySelector('.ticTacToe__board')
+const mainArea = document.querySelector('.ticTacToe__board')
 
 
 class Menu{
-    constructor(playerOneInput, playerTwoInput, place){
+    constructor(playerOneInput, playerTwoInput){
         this.gamePlay; 
         this.toggle = document.querySelector('.ticTacToe__toggle');
         this.start = document.querySelector('.ticTacToe__button'); 
         this.playerOneInput = playerOneInput;
         this.playerTwoInput = playerTwoInput;
-        this.place = place;
-        this.title = document.querySelector('.ticTacToe__title')
-        this.darkText = document.querySelector('.ticTacToe__smallText');
-        this.menuBox = document.querySelector('.ticTacToe__players')
-        this.footer = document.querySelector('.ticTacToe__footer')
+        this.mainArea = document.querySelector('.ticTacToe');
+        this.menu = document.querySelector('.ticTacToe__menu')
         this.header = document.querySelector('.ticTacToe__header')
-        this.boardGame = document.querySelector('.ticTacToe__boardGame')
+        this.title = document.querySelector('.ticTacToe__title')
+        this.menuBox = document.querySelector('.ticTacToe__players')
+        this.darkText = document.querySelector('.ticTacToe__smallText');
+        this.footer = document.querySelector('.ticTacToe__footer')
+
     }
 
     init(){
         this.events()
         this.letteringAnimation(this.title)
         this.menuAnimationOrder()
+
     }
 
     events(){
@@ -45,17 +47,14 @@ class Menu{
             nameOne = 'lazy to put the name One'}
         if(!this.playerTwoInput.value){
             nameTwo = 'lazy to put the name Two'}
-        this.gamePlay = new GamePlay(this.place, nameOne, nameTwo) 
+        this.gamePlay = new GamePlay(this.mainArea, nameOne, nameTwo) 
         
         this.closeMenu() 
        
         setTimeout(()=>{
-            this.boardGame.style.display ='block'
             this.gamePlay.start()
         },1000)
-
-        
-        
+   
     }
 
     letteringAnimation(value){
@@ -65,9 +64,7 @@ class Menu{
                 if(element === ' '){
                     element = '&nbsp'
                 }
-                value.insertAdjacentHTML('beforeend', `<span>${element}</span>`)
-
-            
+                value.insertAdjacentHTML('beforeend', `<span>${element}</span>`)    
         })
     } 
     menuAnimationOrder(){
@@ -80,9 +77,7 @@ class Menu{
         this.footer.classList.add('close')
         this.header.classList.add('close')
         setTimeout(()=>{
-            this.menuBox.style.display = 'none'
-            this.footer.style.display = 'none'
-            this.header.style.display = 'none'
+            this.menu.remove()
         },1000)
     }
 }

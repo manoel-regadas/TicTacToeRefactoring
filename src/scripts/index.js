@@ -7,7 +7,7 @@ const playerTwoName = document.querySelector('#playerTwoInputName');
 const place = document.querySelector('.ticTacToe__board');
 
 
-const menu = new Menu (playerOneName, playerTwoName, place)
+const menu = new Menu (playerOneName, playerTwoName)
 
 menu.init()
 

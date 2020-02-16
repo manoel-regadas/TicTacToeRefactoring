@@ -3,11 +3,13 @@ import Player from './player';
 
 
 class GamePlay {
-   constructor(place, playerOne, playerTwo) {
+   constructor(place, playerOne, playerTwo, scoreBoardNames, scoreBoardPoints) {
       this._board = new Board(place)
       this._playerOne = new Player(playerOne)
       this._playerTwo = new Player(playerTwo)
       this.playerTurn = true;
+      this.scoreBoardNames = scoreBoardNames;
+      this.scoreBoardPoints = scoreBoardPoints;
       this._possibilities = [
          [0, 1, 2],
          [3, 4, 5],
@@ -66,6 +68,8 @@ class GamePlay {
             let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerOne.moves));
             if (win) {
                this.playerOne.point()
+               console.log(this.scoreBoardPoints)
+               this.scoreBoardPoints[0].innerText = this.playerOne.points
                console.log(this.playerOne.name, this.playerOne.points)
                this.finish()
                this.start()
@@ -81,6 +85,7 @@ class GamePlay {
             let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerTwo.moves));
             if (win) {
                this.playerTwo.point()
+               this.scoreBoardPoints[1].innerText = this.playerTwo.points
                console.log(this.playerTwo.name, this.playerTwo.points)
                this.finish()
                this.start()

@@ -26,7 +26,7 @@ class Board {
                     `<div class="ticTacToe__boardGame">
                         <div class="ticTacToe__boardContainer">
                             <div class="ticTacToe__board">${allblocks.join('')}</div>
-                            <h1 class="scoreBoard__nowPlaying">Now Playing</h1>
+                            <h1 class="ticTacToe__nowPlaying">Now Playing</h1>
                             <aside class="scoreBoard">
                                 <div class="scoreBoard__scores">
                                     <div class="scoreBoard__playerOnePoints">

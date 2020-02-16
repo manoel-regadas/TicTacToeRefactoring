@@ -261,20 +261,28 @@
        
     }
 
+    &__nowPlaying{
+        @include text-XL($color3);
+        grid-column: 3;
+        grid-row: 2;
+    }
+
     &__boardContainer{
         display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: repeat(3, auto);
-        
+        grid-template-columns: minmax(50px, auto) repeat(2, auto) minmax(50px, auto);
+        grid-template-rows: repeat(6, auto);
         height: 100%;
         width: auto;
         position: relative;
 
         .scoreBoard{
-            
-            &__nowPlaying{
-                @include text-XL($color3);
+            grid-column: 3;
+            grid-row: 3;
+
+            @media screen and (max-width: 1000px){
+                
             }
+            
             &__scores{
                 margin-top: 40px;
                 width: 100%;
@@ -313,6 +321,8 @@
         background-repeat: no-repeat;
         background-origin: border-box;
         background-size: 510px 510px;
+        grid-column: 2;
+        grid-row: 2/5;
     }
 
     &__area{

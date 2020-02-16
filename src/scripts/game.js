@@ -1,5 +1,5 @@
 import GamePlay from './gameplay';
-const mainArea = document.querySelector('.ticTacToe__board')
+
 
 
 class Game{
@@ -14,7 +14,8 @@ class Game{
     }
 
     variables(){
-        this.mainArea = document.querySelector('.ticTacToe');
+        this.mainArea = document.querySelector('.ticTacToe__board');
+        this.boardGame = document.querySelector('.ticTacToe__boardGame');
         this.menu = document.querySelector('.ticTacToe__menu')
         this.header = document.querySelector('.ticTacToe__header')
         this.title = document.querySelector('.ticTacToe__title')
@@ -23,6 +24,7 @@ class Game{
         this.footer = document.querySelector('.ticTacToe__footer')
         this.scoreBoardNames = document.querySelectorAll('.scoreBoard__names')
         this.scoreBoardPoints = document.querySelectorAll('.scoreBoard__points')
+        console.log(this.scoreBoardNames)
     }
 
     init(){
@@ -55,10 +57,9 @@ class Game{
         if(!this.playerTwoInput.value){
             nameTwo = 'lazy to put the name Two'}
         
-        this.gamePlay = new GamePlay(this.mainArea, nameOne, nameTwo, this.scoreBoardNames,this.scoreBoardPoints) 
+        this.gamePlay = new GamePlay(this.mainArea, nameOne, nameTwo, this.scoreBoardPoints) 
         
-        this.closeMenu() 
-       
+        this.closeMenu()   
         setTimeout(()=>{
             this.gamePlay.start()
         },1000)
@@ -68,10 +69,10 @@ class Game{
         let splitText = value.innerHTML.split('');
         value.innerHTML = ' ';
         splitText.forEach((element) => {
-                if(element === ' '){
-                    element = '&nbsp'
-                }
-                value.insertAdjacentHTML('beforeend', `<span>${element}</span>`)    
+            if(element === ' '){
+                element = '&nbsp'
+            }
+            value.insertAdjacentHTML('beforeend', `<span>${element}</span>`)    
         })
     } 
 
@@ -85,9 +86,12 @@ class Game{
         this.menuBox.classList.add('close')
         this.footer.classList.add('close')
         this.header.classList.add('close')
+        
         setTimeout(()=>{
-            this.menu.remove()
+            this.menu.style.display = 'none'
+            this.boardGame.classList.add('show')
         },1000)
+        
     }
 
     updateScoreBoart(){

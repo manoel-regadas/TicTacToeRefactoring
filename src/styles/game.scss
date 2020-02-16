@@ -258,7 +258,11 @@
 
     &__boardGame{
         width:100%;
-       
+       display: none;
+
+       &.show{
+           display: block;
+       }
     }
 
     &__nowPlaying{

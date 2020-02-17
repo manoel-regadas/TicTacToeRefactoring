@@ -22,9 +22,8 @@ class Game{
         this.menuBox = document.querySelector('.ticTacToe__players')
         this.darkText = document.querySelector('.ticTacToe__smallText');
         this.footer = document.querySelector('.ticTacToe__footer')
-        this.scoreBoardNames = document.querySelectorAll('.scoreBoard__names')
+        this.scoreBoardNames = document.querySelectorAll('.scoreBoard__name')
         this.scoreBoardPoints = document.querySelectorAll('.scoreBoard__points')
-        console.log(this.scoreBoardNames)
     }
 
     init(){
@@ -53,12 +52,13 @@ class Game{
         let nameTwo = this.playerTwoInput.value
         
         if(!this.playerOneInput.value){
-            nameOne = 'lazy to put the name One'}
+            nameOne = 'Too lazy to put the name One'}
         if(!this.playerTwoInput.value){
-            nameTwo = 'lazy to put the name Two'}
+            nameTwo = 'Too lazy to put the name Two'}
         
         this.gamePlay = new GamePlay(this.mainArea, nameOne, nameTwo, this.scoreBoardPoints) 
-        
+        this.scoreBoardNames[0].innerText = this.gamePlay.playerOne.name
+        this.scoreBoardNames[1].innerText = this.gamePlay.playerTwo.name
         this.closeMenu()   
         setTimeout(()=>{
             this.gamePlay.start()

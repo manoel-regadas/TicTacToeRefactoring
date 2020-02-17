@@ -20,6 +20,7 @@ class GamePlay {
          [2, 4, 6]
       ];
    }
+
    get wonPossibilities() {
       return this._possibilities;
    }

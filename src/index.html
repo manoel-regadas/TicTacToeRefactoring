@@ -21,12 +21,12 @@
             <p class="ticTacToe__title">get ready players for the ultimate game</p>
             
             <form action="" class="ticTacToe__inputs">
-              <label for="playerOne" class="ticTacToe__inputLabel">
-                <input  type="text" name="playerOne" placeholder="player one" class="ticTacToe__inputName" id="playerOneInputName" spellcheck="false">
+              <label for="playerOne" class="ticTacToe__inputLabel inputCross">
+                <input  type="text" name="playerOne" placeholder="player one" class="ticTacToe__inputName" id="playerOneInputName" spellcheck="false" maxlength="20">
               </label>
               
-              <label for="playerTwo" class="ticTacToe__inputLabel">
-                <input type="text" name="playerTwo" placeholder="player two" class="ticTacToe__inputName" id="playerTwoInputName" spellcheck="false">
+              <label for="playerTwo" class="ticTacToe__inputLabel inputCircle">
+                <input type="text" name="playerTwo" placeholder="player two" class="ticTacToe__inputName" id="playerTwoInputName" spellcheck="false" maxlength="20j">
               </label>
             </form>
             <i class="ticTacToe__button"><p>Let's Go</p></i>
@@ -43,7 +43,7 @@
         <div class="ticTacToe__boardContainer">
             <div class="ticTacToe__board">
             </div>
-            <h1 class="ticTacToe__nowPlaying">Now Playing</h1>
+            <h1 class="ticTacToe__nowPlaying">Now Playing <img class="ticTacToe__nowPlayingSymbol" src="src/image/crossBlue.svg" alt=""></span></h1>
             <aside class="scoreBoard">
                 <div class="scoreBoard__scores">
                     <div class="scoreBoard__playerOnePoints">

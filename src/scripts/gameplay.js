@@ -3,12 +3,13 @@ import Player from './player';
 
 
 class GamePlay {
-   constructor(place, playerOne, playerTwo, scoreBoardPoints) {
+   constructor(place, playerOne, playerTwo, scoreBoardPoints, whoIsPlaying) {
       this._board = new Board(place)
       this._playerOne = new Player(playerOne)
       this._playerTwo = new Player(playerTwo)
       this.playerTurn = true;
       this.scoreBoardPoints = scoreBoardPoints;
+      this.whoIsPlaying = whoIsPlaying;
       this._possibilities = [
          [0, 1, 2],
          [3, 4, 5],
@@ -20,7 +21,7 @@ class GamePlay {
          [2, 4, 6]
       ];
    }
-
+ 
    get wonPossibilities() {
       return this._possibilities;
    }
@@ -63,7 +64,8 @@ class GamePlay {
          this.playerTurn = false
          this.playerOne.moves.push(parseInt(currentTarget.dataset.area))
          currentTarget.classList.add('xMark', 'clicked')
-
+         this.whoIsPlaying.src = '/src/image/circleBlue.svg'
+         
          if (this.playerOne.moves.length >= 3) {
             let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerOne.moves));
             if (win) {
@@ -71,6 +73,7 @@ class GamePlay {
                this.scoreBoardPoints[0].innerText = this.playerOne.points
                this.finish()
                this.start()
+               this.whoIsPlaying.src = '/src/image/crossBlue.svg'
                this.playerTurn = true
             }
          }
@@ -78,6 +81,7 @@ class GamePlay {
          this.playerTurn = true
          this.playerTwo.moves.push(parseInt(currentTarget.dataset.area))
          currentTarget.classList.add('oMark', 'clicked')
+         this.whoIsPlaying.src = '/src/image/crossBlue.svg'
 
          if (this.playerTwo.moves.length >= 3) {
             let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerTwo.moves));
@@ -86,6 +90,7 @@ class GamePlay {
                this.scoreBoardPoints[1].innerText = this.playerTwo.points
                this.finish()
                this.start()
+               this.whoIsPlaying.src = '/src/image/crossBlue.svg'
                this.playerTurn = true
             }
          }

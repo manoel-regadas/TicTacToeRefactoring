@@ -128,6 +128,38 @@
             z-index:10;
             box-sizing: border-box;
             left:0;
+            
+       }
+
+       &.inputCross{
+        &::before{
+            content: '';
+            background-image: url(/src/image/cross.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            right: 13px;
+            top: 11px;
+           }
+       }
+       &.inputCircle{
+        &::before{
+            content: '';
+            background-image: url(/src/image/circle.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            width: 28px;
+            height: 28px;
+            position: absolute;
+            right: 13px;
+            top: 8px;
+           }
        }
     }
 
@@ -269,11 +301,25 @@
         @include text-XL($color3);
         grid-column: 3;
         grid-row: 2;
+        position: relative;
+        margin-left: 25px;
+    }
+
+    &__nowPlayingSymbol{
+        position: absolute;
+        width: 40px;
+        right: 20px;
+        bottom: -7px;
+        
+        img{
+            width: 40px;
+        }
+   
     }
 
     &__boardContainer{
         display: grid;
-        grid-template-columns: minmax(50px, auto) repeat(2, auto) minmax(50px, auto);
+        grid-template-columns: minmax(50px, auto) auto 265px minmax(50px, auto);
         grid-template-rows: repeat(6, auto);
         height: 100%;
         width: auto;
@@ -305,7 +351,7 @@
             }
 
             &__name{
-                @include text-XS($color3)
+                @include text-XS($labelText)
             }
 
             &__points{
@@ -383,7 +429,7 @@
     position: relative;
 }
 .oMark::before{
-    content: url(/src/image/circle.svg);
+    content: url(/src/image/circleBlue.svg);
     width: 100%;
     max-width: 160px;
     position: absolute;

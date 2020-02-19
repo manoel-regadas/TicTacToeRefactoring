@@ -24,6 +24,7 @@ class Game{
         this.footer = document.querySelector('.ticTacToe__footer')
         this.scoreBoardNames = document.querySelectorAll('.scoreBoard__name')
         this.scoreBoardPoints = document.querySelectorAll('.scoreBoard__points')
+        this.whoIsPlayingSymbol = document.querySelector('.ticTacToe__nowPlayingSymbol')
     }
 
     init(){
@@ -56,7 +57,7 @@ class Game{
         if(!this.playerTwoInput.value){
             nameTwo = 'Too lazy to put the name Two'}
         
-        this.gamePlay = new GamePlay(this.mainArea, nameOne, nameTwo, this.scoreBoardPoints) 
+        this.gamePlay = new GamePlay(this.mainArea, nameOne, nameTwo, this.scoreBoardPoints, this.whoIsPlayingSymbol) 
         this.scoreBoardNames[0].innerText = this.gamePlay.playerOne.name
         this.scoreBoardNames[1].innerText = this.gamePlay.playerTwo.name
         this.closeMenu()   

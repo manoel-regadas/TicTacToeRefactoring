@@ -11,14 +11,14 @@ class GamePlay {
       this.scoreBoardPoints = scoreBoardPoints;
       this.whoIsPlaying = whoIsPlaying;
       this._possibilities = {        
-         '012':{game:'',css:null},
-         '345':{game:'',css:null},
-         '678':{game:'',css:null},
-         '036':{game:'',css:null},
-         '147':{game:'',css:null},
-         '258':{game:'',css:null},
-         '048':{game:'',css:null},
-         '246':{game:'',css:null},
+         '012':{css:null},
+         '345':{css:null},
+         '678':{css:null},
+         '036':{css:null},
+         '147':{css:null},
+         '258':{css:null},
+         '048':{css:null},
+         '246':{css:null},
       }
    }
  
@@ -99,6 +99,7 @@ class GamePlay {
    checkWinner(possibilities, moves) {
       for(let key in possibilities){
          if(key[0] in moves && key[1] in moves && key[2] in moves){
+            console.log(possibilities[key[0]+key[1]+key[2]].css)
             return true
          }
       }

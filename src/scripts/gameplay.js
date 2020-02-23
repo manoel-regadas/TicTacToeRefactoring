@@ -10,16 +10,16 @@ class GamePlay {
       this.playerTurn = true;
       this.scoreBoardPoints = scoreBoardPoints;
       this.whoIsPlaying = whoIsPlaying;
-      this._possibilities = [
-         [0, 1, 2],
-         [3, 4, 5],
-         [6, 7, 8],
-         [0, 3, 6],
-         [1, 4, 7],
-         [2, 5, 8],
-         [0, 4, 8],
-         [2, 4, 6]
-      ];
+      this._possibilities = {        
+         '012':{game:'',css:null},
+         '345':{game:'',css:null},
+         '678':{game:'',css:null},
+         '036':{game:'',css:null},
+         '147':{game:'',css:null},
+         '258':{game:'',css:null},
+         '048':{game:'',css:null},
+         '246':{game:'',css:null},
+      }
    }
  
    get wonPossibilities() {
@@ -62,12 +62,12 @@ class GamePlay {
    play({currentTarget}) {
       if (this.playerTurn && !currentTarget.classList.contains('clicked')) {
          this.playerTurn = false
-         this.playerOne.moves.push(parseInt(currentTarget.dataset.area))
+         this.playerOne.moves[currentTarget.dataset.area] = 'X'
          currentTarget.classList.add('xMark', 'clicked')
          this.whoIsPlaying.src = '/src/image/circleBlue.svg'
          
-         if (this.playerOne.moves.length >= 3) {
-            let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerOne.moves));
+         if (Object.keys(this.playerOne.moves).length >= 3) {
+            let win = this.checkWinner(this.wonPossibilities, this.playerOne.moves)
             if (win) {
                this.playerOne.point()
                this.scoreBoardPoints[0].innerText = this.playerOne.points
@@ -79,12 +79,12 @@ class GamePlay {
          }
       } else if (!this.playerTurn && !currentTarget.classList.contains('clicked')) {
          this.playerTurn = true
-         this.playerTwo.moves.push(parseInt(currentTarget.dataset.area))
+         this.playerTwo.moves[currentTarget.dataset.area] = 'O'
          currentTarget.classList.add('oMark', 'clicked')
          this.whoIsPlaying.src = '/src/image/crossBlue.svg'
 
-         if (this.playerTwo.moves.length >= 3) {
-            let win = this.wonPossibilities.some(el => this.checkWinner(el, this.playerTwo.moves));
+         if (Object.keys(this.playerTwo.moves).length >= 3) {
+            let win = this.checkWinner(this.wonPossibilities, this.playerTwo.moves)
             if (win) {
                this.playerTwo.point()
                this.scoreBoardPoints[1].innerText = this.playerTwo.points
@@ -96,20 +96,16 @@ class GamePlay {
          }
       }
    }
-   checkWinner(arrayOne, arraytwo) {
-      let arrayCount = [];
-      for (var i = 0; i < arraytwo.length; i++) {
-         let arrayTest = arrayOne.some((element) => element === arraytwo[i]);
-         if (arrayTest) {
-            arrayCount.push(true);
+   checkWinner(possibilities, moves) {
+      for(let key in possibilities){
+         if(key[0] in moves && key[1] in moves && key[2] in moves){
+            return true
          }
-      };
-      return arrayCount.length < 3 ? false : true;
+      }
    }
-
    finish(){
-      this.playerOne.moves = [];
-      this.playerTwo.moves = [];
+      this.playerOne.moves = {};
+      this.playerTwo.moves = {};
       this.board.place.innerHTML = ' ';
    }
 }

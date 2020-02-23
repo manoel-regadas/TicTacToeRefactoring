@@ -2,7 +2,7 @@ class Player{
     constructor(name){
         this._name = name; 
         this._points = 0;
-        this._moves = [];
+        this._moves = {}
     }
 
     get name(){

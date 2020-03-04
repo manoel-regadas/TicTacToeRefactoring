@@ -8,7 +8,7 @@
   <title>TicTacToe</title>
 </head>
 <body>
-  <section class="ticTacToe">
+  <section class="ticTacToe blur">
       <div class="ticTacToe__menu">
           <header class="ticTacToe__header">
             <img class="header__circle" class="circle" src="/src/image/circle.svg" alt="">
@@ -29,7 +29,7 @@
                 <input type="text" name="playerTwo" placeholder="player two" class="ticTacToe__inputName" id="playerTwoInputName" spellcheck="false" maxlength="20j">
               </label>
             </form>
-            <i class="ticTacToe__button"><p>Let's Go</p></i>
+            <i class="ticTacToe__button button"><p>Let's Go</p></i>
           </article>
 
           <footer class="ticTacToe__footer">
@@ -60,5 +60,20 @@
         </div>  
     </div>
   </section>
+  <div class="modal">
+    <article class="modal__article">
+      <div class="modal__winnerSymbol">
+        <img class="modal__symbol"  src="/src/image/circle.svg" alt="">
+        <img class="modal__bigSymbol" src="/src/image/circle.svg" alt="">
+        <img class="modal__symbol" src="/src/image/circle.svg" alt="">
+      </div>
+      <p class="modal__title">You won</p>
+      <small class="modal__smallText">Do you dare to continue?</small>
+      <div class="modal__buttonBox">
+        <i class="modal__button button"><p>forfeit</p></i>
+        <i class="modal__button button"><p>continue</p></i>
+      </div>
+    </article>
+  </div>
 </body>
 </html>

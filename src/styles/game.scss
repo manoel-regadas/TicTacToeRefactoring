@@ -10,7 +10,10 @@
     align-items: center;
     justify-content: center;
     background-color: $color1;
-
+    
+    &.blur{
+        filter:blur(6px);
+    }
     
     &__menu{
         width: 100%; 
@@ -179,40 +182,7 @@
         
     }
 
-    &__button{
-        padding: 20px 42px;
-        text-transform: uppercase;
-        @include text-L ($color3);
-        border-radius: 100px;
-        cursor: pointer;
-        margin-top: 40px;
-        box-sizing: border-box;
-        background-color: $color1;
-        @include boxShadowWhite;
-        animation: upShadowButton 1.8s ease-out;
-
-        @keyframes upShadowButton {
-            0%{@include boxShadowWhiteInit}
-            50%{@include boxShadowWhiteInit}
-            100% {@include boxShadowWhite}
-        }
-
-        &:active{
-            transform:scale(0.98);
-            @include boxShadowWhiteCliked; 
-          }
-        
-          p{
-            animation: showBTNText 2s ease-out forwards;
-            opacity:0;
-            @keyframes showBTNText {
-                0%{}
-                60%{opacity:0;}
-                100% {opacity:1.0;}
-            }
-        }
-
-    }
+    
 
     &__footer{
         display: flex;
@@ -409,9 +379,74 @@
     }
     [data-area="8"]{
     
-    } 
+    }     
+}
 
-    
+.modal{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 375px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    &__article{
+        position: relative;
+        background-color: $color1;
+        max-width:700px;
+        min-height: 337px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        @include boxShadowWhite;
+
+    }
+
+    &__winnerSymbol{
+        display: flex;
+        position: absolute;
+        top:-100px
+      
+    }
+
+    &__symbol{
+        width: 150px;
+        
+    }
+
+    &__bigSymbol{
+        width: 200px;
+    }
+
+    &__title{
+       @include text-Giant($color3);
+       text-transform:uppercase;
+       margin-top: 110px;
+    }
+
+    &__smallText{
+        @include text-XS($color3);
+        margin-top:10px;
+    }
+
+    &__buttonBox{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__button{
+        &:nth-of-type(2){
+            margin-left: 20px;
+        }
+    }
 }
 
 .xMark{

@@ -325,6 +325,7 @@
         width: auto;
         position: relative;
 
+
         .scoreBoard{
             grid-column: 3;
             grid-row: 3;
@@ -373,6 +374,7 @@
         background-size: 510px 510px;
         grid-column: 2;
         grid-row: 2/5;
+        position: relative;
     }
 
     &__area{
@@ -397,7 +399,6 @@
       
     }
     [data-area="5"]{
-        
     
     }
     [data-area="6"]{
@@ -436,3 +437,14 @@
     pointer-events: none
 }
 
+.risco{
+    width:100%;
+    max-width: 580px;
+    height: 30px;
+    background-color: $color3;
+    position: absolute;
+    display: none;
+    z-index: 1;
+    border-radius: 20px;
+    @include boxShadowWhite
+}

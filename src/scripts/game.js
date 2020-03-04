@@ -25,6 +25,7 @@ class Game{
         this.scoreBoardNames = document.querySelectorAll('.scoreBoard__name')
         this.scoreBoardPoints = document.querySelectorAll('.scoreBoard__points')
         this.whoIsPlayingSymbol = document.querySelector('.ticTacToe__nowPlayingSymbol')
+        this.stick = document.querySelector('.risco')
     }
 
     init(){

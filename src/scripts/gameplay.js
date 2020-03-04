@@ -11,14 +11,14 @@ class GamePlay {
       this.scoreBoardPoints = scoreBoardPoints;
       this.whoIsPlaying = whoIsPlaying;
       this._possibilities = {        
-         '012':{css:null},
-         '345':{css:null},
-         '678':{css:null},
-         '036':{css:null},
-         '147':{css:null},
-         '258':{css:null},
-         '048':{css:null},
-         '246':{css:null},
+         '012':{css:'display:block; top:14%'},
+         '345':{css:'display:block; top:47%'},
+         '678':{css:'display:block; top:80%'},
+         '036':{css:'display:block; top: 46%; left: -33%; transform: rotate(90deg)'},
+         '147':{css:'display:block; top: 46%; transform: rotate(90deg);'},
+         '258':{css:'display:block; top: 46%; left: 33%; transform: rotate(90deg)'},
+         '048':{css:'display:block; top: 46%; left: -1%; transform: rotate(45deg)'},
+         '246':{css:'display:block; top: 46%; left: -1%; transform: rotate(-45deg)'},
       }
    }
  
@@ -40,10 +40,6 @@ class GamePlay {
 
    get getAllBlocks() {
       return this._board.blocks
-   }
-
-   init(){
-      
    }
 
    start() {
@@ -68,13 +64,20 @@ class GamePlay {
          
          if (Object.keys(this.playerOne.moves).length >= 3) {
             let win = this.checkWinner(this.wonPossibilities, this.playerOne.moves)
-            if (win) {
-               this.playerOne.point()
-               this.scoreBoardPoints[0].innerText = this.playerOne.points
-               this.finish()
-               this.start()
-               this.whoIsPlaying.src = '/src/image/crossBlue.svg'
-               this.playerTurn = true
+            if (win[0]) {
+               console.log(win[1].css)
+               let stick = document.querySelector('.risco')
+               stick.style = win[1].css
+
+               setTimeout(() => {
+                  
+                  this.playerOne.point()
+                  this.scoreBoardPoints[0].innerText = this.playerOne.points
+                  this.finish()
+                  this.start()
+                  this.whoIsPlaying.src = '/src/image/crossBlue.svg'
+                  this.playerTurn = true
+               }, 2000);
             }
          }
       } else if (!this.playerTurn && !currentTarget.classList.contains('clicked')) {
@@ -85,13 +88,18 @@ class GamePlay {
 
          if (Object.keys(this.playerTwo.moves).length >= 3) {
             let win = this.checkWinner(this.wonPossibilities, this.playerTwo.moves)
-            if (win) {
-               this.playerTwo.point()
-               this.scoreBoardPoints[1].innerText = this.playerTwo.points
-               this.finish()
-               this.start()
-               this.whoIsPlaying.src = '/src/image/crossBlue.svg'
-               this.playerTurn = true
+            if (win[0]) {
+               let stick = document.querySelector('.risco')
+               stick.style = win[1].css
+               setTimeout(() => {
+                  
+                  this.playerTwo.point()
+                  this.scoreBoardPoints[1].innerText = this.playerTwo.points
+                  this.finish()
+                  this.start()
+                  this.whoIsPlaying.src = '/src/image/crossBlue.svg'
+                  this.playerTurn = true
+               }, 2000);
             }
          }
       }
@@ -99,8 +107,8 @@ class GamePlay {
    checkWinner(possibilities, moves) {
       for(let key in possibilities){
          if(key[0] in moves && key[1] in moves && key[2] in moves){
-            console.log(possibilities[key[0]+key[1]+key[2]].css)
-            return true
+            
+            return [true, possibilities[key[0] + key[1] + key[2]]]
          }
       }
    }

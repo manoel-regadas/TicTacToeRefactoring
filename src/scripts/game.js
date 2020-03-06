@@ -14,6 +14,7 @@ class Game{
     }
 
     variables(){
+        this.ticTacToe = document.querySelector('.ticTacToe')
         this.mainArea = document.querySelector('.ticTacToe__board');
         this.boardGame = document.querySelector('.ticTacToe__boardGame');
         this.menu = document.querySelector('.ticTacToe__menu')
@@ -26,6 +27,8 @@ class Game{
         this.scoreBoardPoints = document.querySelectorAll('.scoreBoard__points')
         this.whoIsPlayingSymbol = document.querySelector('.ticTacToe__nowPlayingSymbol')
         this.stick = document.querySelector('.risco')
+        this.modal = document.querySelector('.modal')
+        this.modalButtons = document.querySelectorAll('.modal__button')
     }
 
     init(){
@@ -58,7 +61,17 @@ class Game{
         if(!this.playerTwoInput.value){
             nameTwo = 'Too lazy to put the name Two'}
         
-        this.gamePlay = new GamePlay(this.mainArea, nameOne, nameTwo, this.scoreBoardPoints, this.whoIsPlayingSymbol) 
+        this.gamePlay = new GamePlay(
+            this.ticTacToe,
+            this.mainArea, 
+            nameOne,
+            nameTwo,
+            this.scoreBoardPoints,
+            this.whoIsPlayingSymbol,
+            this.modal,
+            this.modalButtons
+        ) 
+
         this.scoreBoardNames[0].innerText = this.gamePlay.playerOne.name
         this.scoreBoardNames[1].innerText = this.gamePlay.playerTwo.name
         this.closeMenu()   

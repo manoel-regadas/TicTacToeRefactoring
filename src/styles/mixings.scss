@@ -83,7 +83,7 @@ $mainFont:'Roboto', sans-serif;
     cursor: pointer;
     margin-top: 40px;
     box-sizing: border-box;
-    background-color: $color1;
+    background-color: transparent;
     @include boxShadowWhite;
     animation: upShadowButton 1.8s ease-out;
 
@@ -91,6 +91,40 @@ $mainFont:'Roboto', sans-serif;
         0%{@include boxShadowWhiteInit}
         50%{@include boxShadowWhiteInit}
         100% {@include boxShadowWhite}
+    }
+
+    &:active{
+        transform:scale(0.98);
+        @include boxShadowWhiteCliked; 
+      }
+    
+      p{
+        animation: showBTNText 2s ease-out forwards;
+        opacity:0;
+        @keyframes showBTNText {
+            0%{}
+            60%{opacity:0;}
+            100% {opacity:1.0;}
+        }
+    }
+
+}
+
+.blueButton{
+    padding: 20px 42px;
+    text-transform: uppercase;
+    @include text-L ($color1);
+    border-radius: 100px;
+    cursor: pointer;
+    margin-top: 40px;
+    box-sizing: border-box;
+    @include boxShadowWhite;
+    animation: upShadowBlueButton 1.8s ease-out forwards;
+
+    @keyframes upShadowBlueButton {
+        0%{@include boxShadowWhiteInit}
+        50%{background-color: transparent;@include boxShadowWhiteInit}
+        100% {background-color:$color3;@include boxShadowWhite}
     }
 
     &:active{

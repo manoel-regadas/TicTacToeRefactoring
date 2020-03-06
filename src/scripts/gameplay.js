@@ -3,13 +3,17 @@ import Player from './player';
 
 
 class GamePlay {
-   constructor(place, playerOne, playerTwo, scoreBoardPoints, whoIsPlaying) {
+   constructor(ticTacToe,place, playerOne, playerTwo, scoreBoardPoints, whoIsPlaying, modal, modalBTNs) {
+      this._ticTacToe = ticTacToe
       this._board = new Board(place)
+      this._place = place
       this._playerOne = new Player(playerOne)
       this._playerTwo = new Player(playerTwo)
       this.playerTurn = true;
       this.scoreBoardPoints = scoreBoardPoints;
       this.whoIsPlaying = whoIsPlaying;
+      this._modal = modal
+      this._modalBTNs = modalBTNs
       this._possibilities = {        
          '012':{css:'display:block; top:14%'},
          '345':{css:'display:block; top:47%'},
@@ -21,9 +25,25 @@ class GamePlay {
          '246':{css:'display:block; top: 46%; left: -1%; transform: rotate(-45deg)'},
       }
    }
- 
+
+   set place(value){
+      return this._place = value
+   }
+   
+   get place(){
+      return this._place
+   }
+
+   get ticTacToe(){
+      return this._ticTacToe
+   }
+
    get wonPossibilities() {
       return this._possibilities;
+   }
+
+   set board(value) {
+      return this._board = value
    }
 
    get board() {
@@ -42,16 +62,27 @@ class GamePlay {
       return this._board.blocks
    }
 
+   get modal() {
+      return this._modal
+   }
+
+   get modalBTNs(){
+      return this._modalBTNs
+   }
+
    start() {
       this.board.render();
-      this.gamePlayeEvents()
+      this.gamePlayEvents()
       
    }
 
-   gamePlayeEvents() {
+   gamePlayEvents() {
       this.getAllBlocks.forEach(element => {
          element.addEventListener('click', this.play.bind(this))
       });
+      
+      this._modalBTNs[0].addEventListener('click', this.toMenu.bind(this))
+      this._modalBTNs[1].addEventListener('click', this.continue.bind(this))
 
    }
 
@@ -68,16 +99,15 @@ class GamePlay {
                console.log(win[1].css)
                let stick = document.querySelector('.risco')
                stick.style = win[1].css
-
+               this.ticTacToe.classList.add('blur')
+               this.modal.style.display = 'flex'
+               this.playerOne.point()
+               this.scoreBoardPoints[0].innerText = this.playerOne.points
+               
                setTimeout(() => {
-                  
-                  this.playerOne.point()
-                  this.scoreBoardPoints[0].innerText = this.playerOne.points
                   this.finish()
-                  this.start()
-                  this.whoIsPlaying.src = '/src/image/crossBlue.svg'
-                  this.playerTurn = true
-               }, 2000);
+               }, 1500);  
+
             }
          }
       } else if (!this.playerTurn && !currentTarget.classList.contains('clicked')) {
@@ -91,31 +121,48 @@ class GamePlay {
             if (win[0]) {
                let stick = document.querySelector('.risco')
                stick.style = win[1].css
+               this.ticTacToe.classList.add('blur')
+               this.modal.style.display = 'flex'
+               this.playerTwo.point()
+               this.scoreBoardPoints[1].innerText = this.playerTwo.points
+               
                setTimeout(() => {
-                  
-                  this.playerTwo.point()
-                  this.scoreBoardPoints[1].innerText = this.playerTwo.points
                   this.finish()
-                  this.start()
-                  this.whoIsPlaying.src = '/src/image/crossBlue.svg'
-                  this.playerTurn = true
-               }, 2000);
+               }, 1500);  
+
             }
          }
       }
    }
+
    checkWinner(possibilities, moves) {
       for(let key in possibilities){
          if(key[0] in moves && key[1] in moves && key[2] in moves){
-            
             return [true, possibilities[key[0] + key[1] + key[2]]]
          }
       }
+      return [false]
    }
+
    finish(){
       this.playerOne.moves = {};
       this.playerTwo.moves = {};
-      this.board.place.innerHTML = ' ';
+   }
+
+   toMenu({currentTarget}){
+      this.modal.style.display = 'none'
+      this.ticTacToe.classList.remove('blur')
+      this.board = null
+      this.place.innerHTML = ' ';
+      this.finish()
+   }
+
+   continue({currentTarget}){
+      this.start()
+      this.whoIsPlaying.src = '/src/image/crossBlue.svg'
+      this.playerTurn = true
+      this.modal.style.display = 'none'
+      this.ticTacToe.classList.remove('blur')
    }
 }
 

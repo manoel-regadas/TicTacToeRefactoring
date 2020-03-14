@@ -29,6 +29,7 @@ class Game{
         this.stick = document.querySelector('.risco')
         this.modal = document.querySelector('.modal')
         this.modalButtons = document.querySelectorAll('.modal__button')
+        this.sybolsModal = document.querySelectorAll('.modal__symbol')
     }
 
     init(){
@@ -69,7 +70,8 @@ class Game{
             this.scoreBoardPoints,
             this.whoIsPlayingSymbol,
             this.modal,
-            this.modalButtons
+            this.modalButtons,
+            this.sybolsModal
         ) 
 
         this.scoreBoardNames[0].innerText = this.gamePlay.playerOne.name

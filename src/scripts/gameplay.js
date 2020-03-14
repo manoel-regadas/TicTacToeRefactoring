@@ -3,7 +3,7 @@ import Player from './player';
 
 
 class GamePlay {
-   constructor(ticTacToe,place, playerOne, playerTwo, scoreBoardPoints, whoIsPlaying, modal, modalBTNs) {
+   constructor(ticTacToe,place, playerOne, playerTwo, scoreBoardPoints, whoIsPlaying, modal, modalBTNs, sybolsModal) {
       this._ticTacToe = ticTacToe
       this._board = new Board(place)
       this._place = place
@@ -14,6 +14,7 @@ class GamePlay {
       this.whoIsPlaying = whoIsPlaying;
       this._modal = modal
       this._modalBTNs = modalBTNs
+      this._sybolsModal = sybolsModal
       this._possibilities = {        
          '012':{css:'display:block; top:14%'},
          '345':{css:'display:block; top:47%'},
@@ -69,6 +70,10 @@ class GamePlay {
    get modalBTNs(){
       return this._modalBTNs
    }
+   
+   get sybolsModal(){
+      return this._sybolsModal
+   }
 
    start() {
       this.board.render();
@@ -95,9 +100,10 @@ class GamePlay {
          
          if (Object.keys(this.playerOne.moves).length >= 3) {
             let win = this.checkWinner(this.wonPossibilities, this.playerOne.moves)
+            
             if (win[0]) {
-               console.log(win[1].css)
                let stick = document.querySelector('.risco')
+               this.sybolsModal.forEach(element => element.src = '/src/image/crossBlue.svg')
                stick.style = win[1].css
                this.ticTacToe.classList.add('blur')
                this.modal.style.display = 'flex'
@@ -106,8 +112,12 @@ class GamePlay {
                
                setTimeout(() => {
                   this.finish()
-               }, 1500);  
+               }, 2000);  
+            }
 
+            if(!win[0] && Object.keys(this.playerOne.moves).length === 5){
+               this.finish()
+               this.start()
             }
          }
       } else if (!this.playerTurn && !currentTarget.classList.contains('clicked')) {
@@ -120,6 +130,7 @@ class GamePlay {
             let win = this.checkWinner(this.wonPossibilities, this.playerTwo.moves)
             if (win[0]) {
                let stick = document.querySelector('.risco')
+               this.sybolsModal.forEach(element => element.src = '/src/image/circleBlue.svg')
                stick.style = win[1].css
                this.ticTacToe.classList.add('blur')
                this.modal.style.display = 'flex'
@@ -128,8 +139,12 @@ class GamePlay {
                
                setTimeout(() => {
                   this.finish()
-               }, 1500);  
+               }, 2000);  
+            }
 
+            if(!win[0] && Object.keys(this.playerTwo.moves).length == 5){
+               this.finish()
+               this.start()
             }
          }
       }

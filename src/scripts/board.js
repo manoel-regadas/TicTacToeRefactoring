@@ -18,7 +18,7 @@ class Board {
 
     render(){
         this._place.innerHTML = ' '; 
-        let allblocks = ['<div class="risco"></div>']
+        let allblocks = ['<div class="line"></div>']
         for(let i = 0; i < 9; i++){
             allblocks.push(`<li class="ticTacToe__area" data-area="${i}"></li>`) 
         } 

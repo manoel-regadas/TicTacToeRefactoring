@@ -92,6 +92,7 @@ class GamePlay {
    }
 
    play({currentTarget}) {
+      let line = document.querySelector('.line')
       if (this.playerTurn && !currentTarget.classList.contains('clicked')) {
          this.playerTurn = false
          this.playerOne.moves[currentTarget.dataset.area] = 'X'
@@ -102,9 +103,8 @@ class GamePlay {
             let win = this.checkWinner(this.wonPossibilities, this.playerOne.moves)
             
             if (win[0]) {
-               let stick = document.querySelector('.risco')
                this.sybolsModal.forEach(element => element.src = '/src/image/crossBlue.svg')
-               stick.style = win[1].css
+               line.style = win[1].css
                this.ticTacToe.classList.add('blur')
                this.modal.style.display = 'flex'
                this.playerOne.point()
@@ -128,10 +128,9 @@ class GamePlay {
 
          if (Object.keys(this.playerTwo.moves).length >= 3) {
             let win = this.checkWinner(this.wonPossibilities, this.playerTwo.moves)
-            if (win[0]) {
-               let stick = document.querySelector('.risco')
+            if (win[0]) { 
                this.sybolsModal.forEach(element => element.src = '/src/image/circleBlue.svg')
-               stick.style = win[1].css
+               line.style = win[1].css
                this.ticTacToe.classList.add('blur')
                this.modal.style.display = 'flex'
                this.playerTwo.point()

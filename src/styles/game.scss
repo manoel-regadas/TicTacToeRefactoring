@@ -270,7 +270,7 @@
 
     &__nowPlaying{
         @include text-XL($color3);
-        grid-column: 3;
+        grid-column: 4;
         grid-row: 2;
         position: relative;
         margin-left: 25px;
@@ -290,7 +290,7 @@
 
     &__boardContainer{
         display: grid;
-        grid-template-columns: minmax(50px, auto) auto 265px minmax(50px, auto);
+        grid-template-columns: minmax(50px, auto) 580px minmax(50px, 120px) 265px minmax(50px, auto);
         grid-template-rows: repeat(6, auto);
         height: 100%;
         width: auto;
@@ -298,9 +298,8 @@
 
 
         .scoreBoard{
-            grid-column: 3;
+            grid-column: 4;
             grid-row: 3;
-
             @media screen and (max-width: 1000px){
                 
             }
@@ -308,14 +307,14 @@
             &__scores{
                 margin-top: 40px;
                 width: 100%;
-                height: auto;
+                height: 115px;
                 width: 265px;
                 background-color:$color1;
                 @include boxShadowWhite;
                 border-radius: 10px;
                 display: flex;
                 justify-content: space-between;
-                padding:31px 31px;
+                padding:22px 31px;
                 
             }
             &__playerOnePoints, &__playerTwoPoints{
@@ -501,5 +500,6 @@
     display: none;
     z-index: 1;
     border-radius: 20px;
-    @include boxShadowWhite
+    @include boxShadowWhite;
+    
 }

@@ -1,5 +1,5 @@
 ::placeholder{
-    color:$labelText;
+    color:var(--labelText);
 }
 
 .ticTacToe{
@@ -9,11 +9,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $color1;
+    background-color: var(--color1);
     
     &.blur{
         filter:blur(20px);
         transition: filter 0.8s ease-in-out;
+        will-change: filter;
     }
     
     &__menu{
@@ -21,7 +22,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: $color1;
+        background-color: var(--color1);
         box-sizing: border-box;
         perspective: 800px;
     }
@@ -56,7 +57,7 @@
         padding: 32px;
         border-radius: 10px;
         animation: upShadow 1s ease-out forwards;
-
+        
         @keyframes upShadow {
             0%{@include boxShadowWhiteInit}
             30%{@include boxShadowWhiteInit}
@@ -74,7 +75,7 @@
     }
 
     &__title{
-        @include text-L($color3); 
+        @include text-L(var(--color3)); 
         text-align:center;
         width:100%;
         max-width: 280px;
@@ -86,6 +87,7 @@
             animation: showSpan 1s forwards;
             opacity:0;
             display: inline-block;
+            will-change: opacity, transform;
 
             @for $i from 1 through 1000{
                 &:nth-of-type(#{$i}){
@@ -95,7 +97,7 @@
 
             @keyframes showSpan {
                 0% {opacity:0;transform:translateY(10px); color:blue;}
-                100% {opacity:1;transform:translateY(0px); color:$color3;}
+                100% {opacity:1;transform:translateY(0px); color:var(--color3);}
             }
         }
     }
@@ -105,7 +107,7 @@
         justify-content: space-between;
         margin-top: 23px;
         width: 100%;
-        
+        will-change: opacity, transform;
         animation: showInputs 1s forwards 0.5s;
         opacity:0;
         
@@ -123,7 +125,7 @@
            content:'';
            width: 230px;
             height: 45px;
-            border: 3px solid #F5F7FA;
+            border: 3px solid var(--color1);
             opacity:0.8;
             border-radius: 100px;
             background-color: transparent;
@@ -170,13 +172,13 @@
     &__inputName{
         width: 230px;
         height: 45px;
-        border: 3px solid $color1;
+        border: 3px solid var(--color1);
         @include boxShadowWhiteInput;
         border-radius: 100px;
         background-color: transparent;
         box-sizing: border-box;
         text-align: center;
-        @include text-XS ($labelText);
+        @include text-XS (var(--labelText));
         font-weight:100;
         
         
@@ -201,13 +203,14 @@
 
     &__smallText{
         text-align: center;
-        @include text-XS ($labelText);
+        @include text-XS (var(--labelText));
         font-weight:100;
         width: 223px;
         height:30px;
         margin-top: 50px;
         opacity: 0;
         animation: smallText 0.5s ease-in-out 1.3s forwards;
+        will-change: transform;
 
         @keyframes smallText {
             0%{transform: translate3d(0,-5px,0);}
@@ -223,14 +226,14 @@
         box-shadow: 4px 4px 8px rgba(55, 84, 170, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.25), inset 2px 2px 4px rgba(255, 255, 255, 0.25);;
         border:1px solid rgba(255, 255, 255, 0.6);
         position: relative;
-        background-color: $color1;
+        background-color: var(--color1);
         margin-top: 26px;
         cursor: pointer;
 
         &:after{
             transition: all 0.2s ease-out;
             content: '';
-            background-color: $color1;
+            background-color: var(--color1);
             display: block;
             width: 24px;
             height: 24px;
@@ -269,7 +272,7 @@
     }
 
     &__nowPlaying{
-        @include text-XL($color3);
+        @include text-XL(var(--color3));
         grid-column: 4;
         grid-row: 2;
         position: relative;
@@ -309,7 +312,7 @@
                 width: 100%;
                 height: 115px;
                 width: 265px;
-                background-color:$color1;
+                background-color:var(--color1);
                 @include boxShadowWhite;
                 border-radius: 10px;
                 display: flex;
@@ -322,12 +325,12 @@
             }
 
             &__name{
-                @include text-XS($labelText)
+                @include text-XS(var(--labelText))
             }
 
             &__points{
                 margin-top: 16px;
-                @include text-XL($color3)
+                @include text-XL(var(--color3))
             }
         }
     }
@@ -396,7 +399,7 @@
 
     &__article{
         position: relative;
-        background-color: $color1;
+        background-color: var(--color1);
         max-width:690px;
         min-height: 337px;
         width: 100%;
@@ -405,6 +408,7 @@
         align-items: center;
         border-radius: 20px;
         @include boxShadowWhite;
+        will-change: opacity, transform;
 
         animation: showModal 0.5s ease-out;
         @keyframes showModal {
@@ -443,13 +447,13 @@
     }
 
     &__title{
-       @include text-Giant($color3);
+       @include text-Giant(var(--color3));
        text-transform:uppercase;
        margin-top: 110px;
     }
 
     &__smallText{
-        @include text-XS($color3);
+        @include text-XS(var(--color3));
         margin-top:10px;
     }
 
@@ -495,7 +499,7 @@
     width:100%;
     max-width: 580px;
     height: 30px;
-    background-color: $color3;
+    background-color: var(--color3);
     position: absolute;
     display: none;
     z-index: 1;

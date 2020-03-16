@@ -164,11 +164,7 @@ class GamePlay {
    }
 
    toMenu({currentTarget}){
-      this.modal.style.display = 'none'
-      this.ticTacToe.classList.remove('blur')
-      this.board = null
-      this.place.innerHTML = ' ';
-      this.finish()
+      location.reload()
    }
 
    continue({currentTarget}){

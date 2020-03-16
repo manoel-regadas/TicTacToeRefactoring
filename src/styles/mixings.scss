@@ -1,33 +1,62 @@
-//colors
-$color1:#EDF0F3;
-$color2:#424348;
-$color3:#4CD6D6;
-//
-$light1: #FFFF;
-$light2: #4C4D53;
-$light3: #57F6F6;
-//
-$shadow1: #3754AA ;
-$shadow2: #38393D;
-$shadow3: #41B6B6;
-//
-$labelText: #A3B1C6;
+
+:root{
+    //colors
+    --color1:#EDF0F3;
+    --color2:#424348;
+    --color3:#4CD6D6;
+    //
+    --light1: #FFFF;
+    --light2: #4C4D53;
+    --light3: #57F6F6;
+    //
+    --shadow1: #3754AA ;
+    --shadow2: #38393D;
+    --shadow3: #41B6B6;
+    //
+    --labelText: #A3B1C6;
+    
+    --boxShadowWhite: 11px 13px 20px 3px rgba(55, 84, 170, 0.15), -7px -10px 40px 5px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);
+    --boxShadowWhiteInit: 0 0 0 0 rgba(55, 84, 170, 0.15), 0 0 0 0 rgba(255, 255, 255, 0.8), inset 0 0 0 rgba(255, 255, 255, 0.5);
+    --boxShadowWhiteCliked:5px 5px 9px rgba(55, 84, 170, 0.03), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);
+    --boxShadowWhiteInput:5px 5px 10px rgba(55, 84, 170, 0.10), inset 5px 5px 10px rgba(55, 84, 170, 0.10), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] {
+    //colors
+    --color1:#424348;
+    --color2:#EDF0F3;
+    --color3:#4CD6D6;
+    //
+    --light1: #4C4D53;
+    --light2: #FFFF;
+    --light3: #57F6F6;
+    //
+    --shadow1: #3754AA ;
+    --shadow2: #38393D;
+    --shadow3: #41B6B6;
+    //
+    --labelText: #A3B1C6;
+
+    --boxShadowWhite: 11px 13px 20px 3px rgba(55, 84, 170, 0.15), -7px -10px 40px 5px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);
+    --boxShadowWhiteInit: 0 0 0 0 rgba(55, 84, 170, 0.15), 0 0 0 0 rgba(255, 255, 255, 0.8), inset 0 0 0 rgba(255, 255, 255, 0.5);
+    --boxShadowWhiteCliked:5px 5px 9px rgba(55, 84, 170, 0.03), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);
+    --boxShadowWhiteInput:5px 5px 10px rgba(55, 84, 170, 0.10), inset 5px 5px 10px rgba(55, 84, 170, 0.10), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);
+
+}
+
 
 //boxSadow:
 @mixin boxShadowWhite {
-    box-shadow: 11px 13px 20px 3px rgba(55, 84, 170, 0.15), -7px -10px 40px 5px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
+    box-shadow: var(--boxShadowWhite);}
 
 @mixin boxShadowWhiteInit {
-    box-shadow: 0 0 0 0 rgba(55, 84, 170, 0.15), 0 0 0 0 rgba(255, 255, 255, 0.8), inset 0 0 0 rgba(255, 255, 255, 0.5);}
-
-@mixin boxShadowWhiteSVG {
-    filter : drop-shadow(11px 13px 20px rgba(55, 84, 170, 0.15) );}
+    box-shadow: var(--boxShadowWhiteInit);}
 
 @mixin boxShadowWhiteCliked {
-    box-shadow: 5px 5px 9px rgba(55, 84, 170, 0.03), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
+    box-shadow: var(--boxShadowWhiteCliked);}
 
 @mixin boxShadowWhiteInput {
-    box-shadow:5px 5px 10px rgba(55, 84, 170, 0.10), inset 5px 5px 10px rgba(55, 84, 170, 0.10), -20px -20px 40px rgba(255, 255, 255, 0.8), inset 5px 5px 10px rgba(255, 255, 255, 0.5);}
+    box-shadow:var(--boxShadowWhiteInput);}
 
 //font
 $mainFont:'Roboto', sans-serif;
@@ -78,14 +107,15 @@ $mainFont:'Roboto', sans-serif;
 .button{
     padding: 20px 42px;
     text-transform: uppercase;
-    @include text-L ($color3);
+    @include text-L (var(--color3));
     border-radius: 100px;
     cursor: pointer;
     margin-top: 40px;
     box-sizing: border-box;
     background-color: transparent;
     @include boxShadowWhite;
-    animation: upShadowButton 1.8s ease-out;
+    will-change: background-color, transparent;
+    animation: upShadowButton 1s ease-out;
 
     @keyframes upShadowButton {
         0%{@include boxShadowWhiteInit}
@@ -113,18 +143,19 @@ $mainFont:'Roboto', sans-serif;
 .blueButton{
     padding: 20px 42px;
     text-transform: uppercase;
-    @include text-L ($color1);
+    @include text-L (var(--color1));
     border-radius: 100px;
     cursor: pointer;
     margin-top: 40px;
     box-sizing: border-box;
     @include boxShadowWhite;
-    animation: upShadowBlueButton 1.8s ease-out forwards;
+    will-change: background-color, transparent;
+    animation: upShadowBlueButton 1s ease-out forwards;
 
     @keyframes upShadowBlueButton {
         0%{@include boxShadowWhiteInit}
         50%{background-color: transparent;@include boxShadowWhiteInit}
-        100% {background-color:$color3;@include boxShadowWhite}
+        100% {background-color:var(--color3);@include boxShadowWhite}
     }
 
     &:active{
@@ -149,4 +180,4 @@ $mainFont:'Roboto', sans-serif;
 
 
 
-$border: solid 3px $shadow2;
+$border: solid 3px var(--shadow2);

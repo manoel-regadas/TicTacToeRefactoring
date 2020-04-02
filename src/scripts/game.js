@@ -21,8 +21,8 @@ class Game{
         this.header = document.querySelector('.ticTacToe__header')
         this.title = document.querySelector('.ticTacToe__title')
         this.menuBox = document.querySelector('.ticTacToe__players')
-        this.darkText = document.querySelector('.ticTacToe__smallText');
-        this.footer = document.querySelector('.ticTacToe__footer')
+        //this.darkText = document.querySelector('.ticTacToe__smallText');
+        //this.footer = document.querySelector('.ticTacToe__footer')
         this.scoreBoardNames = document.querySelectorAll('.scoreBoard__name')
         this.scoreBoardPoints = document.querySelectorAll('.scoreBoard__points')
         this.whoIsPlayingSymbol = document.querySelector('.ticTacToe__nowPlayingSymbol')
@@ -40,13 +40,14 @@ class Game{
     }
 
     events(){
-        this.toggle.addEventListener('click', this.intoTheDark.bind(this))
+       // this.toggle.addEventListener('click', this.intoTheDark.bind(this))
         this.start.addEventListener('click', this.goToGamePlay.bind(this))
     }
 
     intoTheDark({currentTarget}){
         if(!currentTarget.classList.contains('dark')){
             currentTarget.classList.add('dark')
+
         } else {
             currentTarget.classList.remove('dark')
         }
@@ -100,7 +101,7 @@ class Game{
 
     closeMenu(){
         this.menuBox.classList.add('close')
-        this.footer.classList.add('close')
+        //this.footer.classList.add('close')
         this.header.classList.add('close')
         
         setTimeout(()=>{

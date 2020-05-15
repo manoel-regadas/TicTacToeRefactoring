@@ -4,17 +4,76 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500&display=swap" rel="stylesheet">
   <title>TicTacToe</title>
 </head>
 <body>
-  <section class="wrapper">
-      <div class="ticTacToe">
-          <h1 class="title">tic tac toe<span>o x o</span></h1>
+  <section class="ticTacToe">
+      <div class="ticTacToe__menu">
+          <header class="ticTacToe__header">
+            <img class="header__circle" class="circle" src="src/image/circle.svg" alt="" >
+            <img class="cross__cross" src="src/image/cross.svg" alt="">
+            <img class="circle__circle" src="src/image/circle.svg" alt="">
+            
+          </header>
+          <article class="ticTacToe__players">
+            
+            <p class="ticTacToe__title">get ready players for the ultimate game</p>
+            
+            <form action="" class="ticTacToe__inputs">
+              <label for="playerOne" class="ticTacToe__inputLabel inputCross">
+                <input  type="text" name="playerOne" placeholder="player one" class="ticTacToe__inputName" id="playerOneInputName" spellcheck="false" maxlength="20">
+              </label>
+              
+              <label for="playerTwo" class="ticTacToe__inputLabel inputCircle">
+                <input type="text" name="playerTwo" placeholder="player two" class="ticTacToe__inputName" id="playerTwoInputName" spellcheck="false" maxlength="20j">
+              </label>
+            </form>
+            <i class="ticTacToe__button button"><p>Let's Go</p></i>
+          </article>
+
+          <!-- <footer class="ticTacToe__footer">
+            <small class="ticTacToe__smallText">If you are a creature of the night, you can go dark mode</small>
+            <label for="toggle" class="ticTacToe__toggle">
+              <input type="checkbox" name="toggle">
+            </label>
+          </footer> -->
       </div>
-      <div class="boardGame">
-          <div class="border-container">
-          </div>  
-      </div>
+      <div class="ticTacToe__boardGame">
+        <div class="ticTacToe__boardContainer">
+            <div class="ticTacToe__board">
+              
+            </div>
+            <h1 class="ticTacToe__nowPlaying">Now Playing <img class="ticTacToe__nowPlayingSymbol" src="src/image/crossBlue.svg" alt=""></span></h1>
+            <aside class="scoreBoard">
+                <div class="scoreBoard__scores">
+                    <div class="scoreBoard__playerOnePoints">
+                        <p class="scoreBoard__name">Player One</p>
+                        <p class="scoreBoard__points">0</p>
+                    </div>
+                    <div class="scoreBoard__playerTwoPoints"> 
+                        <p class="scoreBoard__name">Player Two</p>
+                        <p class="scoreBoard__points">0</p>
+                    </div>
+                </div>
+            </aside>
+        </div>  
+    </div>
   </section>
+  <div class="modal">
+    <article class="modal__article">
+      <div class="modal__winnerSymbol">
+        <img class="modal__symbol"  src="src/image/circleBlue.svg" alt="">
+        <img class="modal__symbol modal__bigSymbol" src="src/image/circleBlue.svg" alt="">
+        <img class="modal__symbol" src="src/image/circleBlue.svg" alt="">
+      </div>
+      <p class="modal__title">You won</p>
+      <small class="modal__smallText">Do you dare to continue?</small>
+      <div class="modal__buttonBox">
+        <i class="modal__button button"><p>forfeit</p></i>
+        <i class="modal__button blueButton"><p>continue</p></i>
+      </div>
+    </article>
+  </div>
 </body>
 </html>

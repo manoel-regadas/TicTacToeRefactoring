@@ -1,149 +1,620 @@
-.wrapper{
+::placeholder{
+    color:var(--labelText);
+}
+
+.ticTacToe{
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #2d3436;
-    background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
-    .ticTacToe{
-        width: 100%;
-        .title{
-            font-family: $mainFont;
-            font-size: 7em; 
-            text-align: center;
-            padding: 3% 3% 5%;
-            color:$grayColor;
-            span{
-                font-size: 0.2em;
-                font-weight:bold;
-                height: 100%;
-                padding-left: 2%s;
+    background-color: var(--color1);
+    
+    &.blur{
+        filter:blur(20px);
+        transition: filter 0.8s ease-in-out;
+        will-change: filter;
+    }
+    
+    &__menu{
+        width: 100%; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--color1);
+        box-sizing: border-box;
+        perspective: 800px;
+    }
+
+    &__header{
+        height:160px;
+        width: 510px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+
+        @media (max-width: 768px){
+            max-width: 325px;
+            position: relative;
+        }
+        
+        img{
+            height: 216px;
+            position: relative;
+            top: 27px;
+
+            @media (max-width: 768px){
+                height: 130px;
+                position: absolute;
+                top: initial;
+
+                &:nth-of-type(1){
+                    left:-10px;
+                }
+                &:nth-of-type(3){
+                    right:-10px;
+                }
             }
 
         }
+        &.close{
+            transform:translate3d(0,-50px,0);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1.5s;
+        }
     }
-    .boardGame{
+
+    &__players{
+        margin-top: 80px;
+        width: 100%;
+        max-width: 560px;
+        min-height: 280px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 32px;
+        border-radius: 10px;
+        animation: upShadow 1s ease-out forwards;
+
+        @media (max-width: 768px){
+            margin-top: 0px;
+            animation: none;
+        }
+        
+        @keyframes upShadow {
+            0%{@include boxShadowWhiteInit}
+            30%{@include boxShadowWhiteInit}
+            100% {@include boxShadowWhite}
+        }
+
+        &.close{
+            @include boxShadowWhiteInit;
+            transform:scaleZ(1) rotateY(-180deg);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1.5s;
+        }
+
+    }
+
+    &__title{
+        @include text-L(var(--color3)); 
+        text-align:center;
         width:100%;
-        .border-container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* background-color: red;*/
-            height: 100%;
-            width: auto;
-            position: relative;
-            display: flex;  
-            .board{
-                display: grid;
-                grid-template-columns: auto auto auto;
-                padding: 10px;
-                .area{
-                    min-width: 150px;
-                    min-height: 150px;
-                    font-size: 30px;
-                    text-align: center;
-                    box-sizing: border-box;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+        max-width: 280px;
+        min-height:40px;
+        text-transform: uppercase;
+        display: none;
+
+        span{
+            animation: showSpan 1s forwards;
+            opacity:0;
+            display: inline-block;
+            will-change: opacity, transform;
+
+            @for $i from 1 through 1000{
+                &:nth-of-type(#{$i}){
+                    animation-delay: $i * 15ms;
                 }
-                [data-area="0"]{
-                    border-bottom:$border;
-                    border-right:$border ;
-                }
-                [data-area="1"]{
-                    border-bottom:$border;
-                    border-right:$border ;
-                }
-                [data-area="2"]{
-                    border-bottom:$border;
-                }
-                [data-area="3"]{
-                    border-bottom:$border;
-                    border-right:$border ;
-                }
-                [data-area="4"]{
-                    border-bottom:$border;
-                    border-right:$border ;
-                }
-                [data-area="5"]{
-                    border-bottom:$border;
-                
-                }
-                [data-area="6"]{
-                    border-right:$border ;
-                }
-                [data-area="7"]{
-                    border-right:$border ;
-                }
-                [data-area="8"]{
-                
-                } 
+            }
+
+            @keyframes showSpan {
+                0% {opacity:0;transform:translateY(10px); color:blue;}
+                100% {opacity:1;transform:translateY(0px); color:var(--color3);}
             }
         }
     }
-    .modal{
-        position: absolute;
+
+    &__inputs{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 23px;
         width: 100%;
+        will-change: opacity, transform;
+        animation: showInputs 1s forwards 0.5s;
+        opacity:0;
+
+        @media (max-width: 768px){
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        @keyframes showInputs {
+            0% {opacity:0; transform:translateY(15px);}
+            100% {opacity:1;transform:translateY(0px)}
+        }
+    
+
+    }
+    
+    &__inputLabel{
+        position:relative;
+
+        @media (max-width: 768px){
+            margin-top: 16px;
+        }
+       
+        &:after{
+           content:'';
+           width: 230px;
+            height: 45px;
+            border: 3px solid var(--color1);
+            opacity:0.8;
+            border-radius: 100px;
+            background-color: transparent;
+            pointer-events: none;   
+            position:absolute;
+            z-index:10;
+            box-sizing: border-box;
+            left:0;
+
+            @media (max-width: 768px){
+                max-width: 325px;
+                width: 325px;
+                height: 58px;
+            }
+            
+       }
+
+       &.inputCross{
+        &::before{
+            content: '';
+            background-image: url(../image/cross.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            right: 13px;
+            top: 11px;
+
+            @media (max-width: 768px){
+                top: 18px;
+            }
+
+           }
+       }
+       &.inputCircle{
+        &::before{
+            content: '';
+            background-image: url(../image/circle.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            width: 28px;
+            height: 28px;
+            position: absolute;
+            right: 13px;
+            top: 8px;
+
+            @media (max-width: 768px){
+                top: 15px;
+            }
+
+           }
+       }
+    }
+
+    &__inputName{
+        width: 230px;
+        height: 45px;
+        border: 3px solid var(--color1);
+        @include boxShadowWhiteInput;
+        border-radius: 100px;
+        background-color: transparent;
+        box-sizing: border-box;
+        text-align: center;
+        @include text-XS (var(--labelText));
+        font-weight:100;
+        
+        
+        @media (max-width: 768px){
+            max-width: 325px;
+            width: 325px;
+            height: 58px;
+        }
+        
+        
+    }
+
+    
+
+    &__footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+        &.close{
+            transform:translate3d(0,50px,0);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1.5s;
+        }
+    }
+
+    &__smallText{
+        text-align: center;
+        @include text-XS (var(--labelText));
+        font-weight:100;
+        width: 223px;
+        height:30px;
+        margin-top: 50px;
+        opacity: 0;
+        animation: smallText 0.5s ease-in-out 1.3s forwards;
+        will-change: transform;
+
+        @keyframes smallText {
+            0%{transform: translate3d(0,-5px,0);}
+            100%{transform: translate3d(0,0,0);opacity: 1;}
+        }
+    }
+
+    &__toggle{
+        display: block;
+        width: 50px;
+        height: 12px;
+        border-radius: 10px;
+        box-shadow: 4px 4px 8px rgba(55, 84, 170, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.25), inset 2px 2px 4px rgba(255, 255, 255, 0.25);;
+        border:1px solid rgba(255, 255, 255, 0.6);
+        position: relative;
+        background-color: var(--color1);
+        margin-top: 26px;
+        cursor: pointer;
+
+        &:after{
+            transition: all 0.2s ease-out;
+            content: '';
+            background-color: var(--color1);
+            display: block;
+            width: 24px;
+            height: 24px;
+            box-shadow: 4px 4px 8px rgba(55, 84, 170, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.25), inset 2px 2px 4px rgba(255, 255, 255, 0.25);;
+            border:1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 100%;
+            position: absolute;
+            top: -8px;
+            left: -2px;
+            cursor: pointer;
+        }
+
+        &.dark{
+            &:after{
+                transform: translateX(25px);
+            }
+        }
+        
+        input{
+            opacity: 0;
+            position: absolute;
+            width: 50px;
+            height: 26px;
+            bottom: -11px;
+            cursor: pointer;
+        }
+    }
+
+    &__boardGame{
+        width:100%;
+       display: none;
+
+       &.show{
+           display: block;
+       }
+    }
+
+    &__nowPlaying{
+        @include text-XL(var(--color3));
+        grid-column: 4;
+        grid-row: 2;
+        position: relative;
+        margin-left: 25px;
+        @media screen and (max-width: 980px){
+            grid-column: 2;
+            margin: 0 auto;
+            padding-right:75px ;
+        }
+    }
+
+    &__nowPlayingSymbol{
+        position: absolute;
+        width: 40px;
+        right: 20px;
+        bottom: -7px;
+        
+        img{
+            width: 40px;
+        }
+   
+    }
+
+    &__boardContainer{
+        display: grid;
+        grid-template-columns: minmax(50px, auto) 580px minmax(50px, 120px) 265px minmax(50px, auto);
+        grid-template-rows: repeat(6, auto);
         height: 100%;
+        width: auto;
+        position: relative;
+
+        @media (max-width: 980px){
+            grid-template-columns: minmax(10px, auto) auto minmax(10px, auto);
+            grid-template-rows:minmax(10px, auto) auto minmax(30px, auto) auto minmax(35px, auto) auto minmax(40px, auto);
+        }
+
+        .scoreBoard{
+            grid-column: 4;
+            grid-row: 3;
+            
+            @media screen and (max-width: 980px){
+                grid-column: 2;
+                grid-row: 6;
+            }
+            
+            &__scores{
+                margin-top: 40px;
+                width: 100%;
+                height: 115px;
+                width: 265px;
+                background-color:var(--color1);
+                @include boxShadowWhite;
+                border-radius: 10px;
+                display: flex;
+                justify-content: space-between;
+                padding:22px 31px;
+
+                @media screen and (max-width: 980px){
+                    margin: 0 auto;
+                }
+                
+            }
+            &__playerOnePoints, &__playerTwoPoints{
+                text-align: center;
+            }
+
+            &__name{
+                @include text-XS(var(--labelText))
+            }
+
+            &__points{
+                margin-top: 16px;
+                @include text-XL(var(--color3))
+            }
+        }
+    }
+
+    &__board{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 580px;
+        height: 580px;
+        background-image: url(../image/board.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-origin: border-box;
+        background-size: 510px 510px;
+        grid-column: 2;
+        grid-row: 2/5;
+        position: relative;
+
+        @media screen and (max-width: 980px){
+            grid-column: 2;
+            grid-row: 4;
+            margin: 0 auto;
+            width: 320px;
+            height: 320px;
+
+            background-size: 280px 280px;
+        }
+    }
+
+    &__area{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }    
+}
+
+.modal{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 375px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+
+    &__article{
+        position: relative;
+        background-color: var(--color1);
+        max-width:690px;
+        min-height: 337px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        @include boxShadowWhite;
+        will-change: opacity, transform;
+
+        animation: showModal 0.5s ease-out;
+        @keyframes showModal {
+            from{opacity: 0; transform: translateY(50px);}
+            to{opacity: 1.0; transform: translateY(0px)}
+        }
+
+        @media screen and (max-width: 980px){
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            max-width: initial;
+        }
+    }
+
+    &__winnerSymbol{
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+        top:-135px;
+
+        @media screen and (max-width: 980px){
+            position: relative;
+            top:initial;
+            width: 100%;
+            max-width: 300px;
+        }
+      
+    }
+
+    &__symbol{
+        min-width: 180px;
+        width: 180px;
+        position: relative;
+
+        @media screen and (max-width: 980px){
+            width: 100px;
+            min-width: initial;
+            position: absolute;
+        }
+        
+        &:nth-of-type(1){
+            left: 45px;
+
+            @media screen and (max-width: 980px){
+                left: 0;
+            }
+        }
+        
+        &:last-of-type{
+            right: 45px;
+
+            @media screen and (max-width: 980px){
+                right: 0;
+            }
+        }
+    }
+
+    &__bigSymbol{
+        min-width: 230px;
+        width: 230px;
+        position: relative;
+        top:8px;
+
+        @media screen and (max-width: 980px){
+            width: 140px;
+            min-width: initial;
+            left: 27%;
+        }
+    }
+
+    &__title{
+       @include text-Giant(var(--color3));
+       text-transform:uppercase;
+       margin-top: 110px;
+
+        @media screen and (max-width: 980px){
+            margin-top: 40px;
+        }
+    }
+
+    &__smallText{
+        @include text-XS(var(--color3));
+        margin-top:10px;
+    }
+
+    &__buttonBox{
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgba(0,0,0,0.8);
-        article{     
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background-color: $grayColor;
-            min-width: 300px;
-            max-width: 450px;
-            width: 40%;
-            height: 22%;
-            h2{
-                font-family: $mainFont;
-                font-size: 1.5em; 
-                text-align: center;
-            }
-            .modal__button{
-                font-family: $mainFont;
-                padding: 3% 4%;
-                margin-top: 30px;
-                background-color: #2d3436;
-                color: $grayColor;
-                cursor: pointer;
-            }
-        }    
+
+        @media screen and (max-width: 980px){
+            flex-direction: column-reverse;
+        }
     }
+
+    &__button{
+
+        &:nth-of-type(1){
+            @media screen and (max-width: 980px){
+                margin-top: 20px;
+            }
+        }  
+        &:nth-of-type(2){
+            margin-left: 20px;
+            @media screen and (max-width: 980px){
+                margin-left: 0;
+            }
+        }  
+
+        @media screen and (max-width: 980px){
+            max-width:250px;
+            width: 250px;
+            text-align: center;
+        }
+    }
+
 }
 
 .xMark{
-    width: 100%;
-    height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+
 }
 .xMark::before{
-    content: '+';
-    font-size: 7em;
-    color: #d8d8d8;
-    transform: rotate(45deg);   
+    content: url(../image/cross.svg);
     position: absolute;
-    pointer-events: none
+    pointer-events: none;
+    width: 100%;
+    max-width: 160px;
 }
 
 .oMark{
-    width: 100%;
-    height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
 }
 .oMark::before{
-    content: 'O';
-    font-size: 4em;
-    color: #d8d8d8;
-    font-weight: 700;
+    content: url(../image/circleBlue.svg);
+    width: 100%;
+    max-width: 160px;
     position: absolute;
     pointer-events: none
 }
 
+.line{
+    width:100%;
+    max-width: 580px;
+    height: 30px;
+    background-color: var(--color3);
+    position: absolute;
+    display: none;
+    z-index: 1;
+    border-radius: 20px;
+    @include boxShadowWhite;
+    
+}

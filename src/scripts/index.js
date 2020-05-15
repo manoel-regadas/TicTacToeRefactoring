@@ -1,15 +1,19 @@
 import '../styles/index.scss';
-import Board from './board';
-import Player from './player';
+import Game from './game'
+
+
+const playerOneName = document.querySelector('#playerOneInputName');
+const playerTwoName = document.querySelector('#playerTwoInputName');
 
 
 
-      const place = document.querySelector('.border-container');
-      const playerOne = new Player('player 1');
-      const playerTwo = new Player('player 2');
-      const gameArea = new Board(place, 8, playerOne, playerTwo);
-      gameArea.render()
-      gameArea.gamePlay() 
-      console.log(playerOne.moviments)
+const game = new Game (playerOneName, playerTwoName)
+
+game.init()
+
+
+//game.start()
+
+
 
 

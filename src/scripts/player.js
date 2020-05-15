@@ -1,48 +1,33 @@
-class Player {
-    constructor(player){
-        this._player = player;
-        this._moviments = [];
-        this._potuation = 0;
-    }
-    set moviments(value){
-        this._moviments = value;
+class Player{
+    constructor(name){
+        this._name = name; 
+        this._points = 0;
+        this._moves = {}
     }
 
-    get moviments(){
-        return this._moviments;
+    get name(){
+        return this._name
     }
-    get potuation(){
-        return this._potuation;
-    }
-    play(){
-        if(this._isPlaying){
-            return this._isPlaying = false;
-        } else {
-            return this._isPlaying = true;
-        }
-    }
-    modal(){
-        this._potuation++
-        const bodyPage = document.querySelector('.wrapper');
-        const test = `<div class="modal">
-                                <article>
-                                <h2>${this._player} wins!</h2>
-                                <div class="modal__button">continue</div>
-                                </article>
-                            </div>`;
-        
-        setTimeout( () => {
-            bodyPage.innerHTML += test
-            const modal = document.querySelector('.modal')                     
-            const modalButton = document.querySelector('.modal__button');
-            
-            modalButton.onclick = () => {
-                modal.parentNode.removeChild(modal)
-            } 
-        }, 100)                   
-        this._moviments = [];
-    }
-};
 
+    get points(){
+        return this._points
+    }
 
-export default Player; 
+    set points(value){
+        this._points = value;
+    }
+    
+    get moves(){
+        return this._moves;
+    }
+
+    set moves(value){
+        return this._moves = value
+    }
+
+    point(){
+        this.points++
+    }
+}
+
+export default Player;

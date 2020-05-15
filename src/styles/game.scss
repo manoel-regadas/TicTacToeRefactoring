@@ -181,7 +181,7 @@
        &.inputCross{
         &::before{
             content: '';
-            background-image: url(/src/image/cross.svg);
+            background-image: url(../image/cross.svg);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -201,7 +201,7 @@
        &.inputCircle{
         &::before{
             content: '';
-            background-image: url(/src/image/circle.svg);
+            background-image: url(../image/circle.svg);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -412,7 +412,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         width: 580px;
         height: 580px;
-        background-image: url(/src/image/board.svg);
+        background-image: url(../image/board.svg);
         background-position: center;
         background-repeat: no-repeat;
         background-origin: border-box;
@@ -588,7 +588,7 @@
 
 }
 .xMark::before{
-    content: url(/src/image/cross.svg);
+    content: url(../image/cross.svg);
     position: absolute;
     pointer-events: none;
     width: 100%;
@@ -599,7 +599,7 @@
     position: relative;
 }
 .oMark::before{
-    content: url(/src/image/circleBlue.svg);
+    content: url(../image/circleBlue.svg);
     width: 100%;
     max-width: 160px;
     position: absolute;

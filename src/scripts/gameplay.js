@@ -97,13 +97,13 @@ class GamePlay {
          this.playerTurn = false
          this.playerOne.moves[currentTarget.dataset.area] = 'X'
          currentTarget.classList.add('xMark', 'clicked')
-         this.whoIsPlaying.src = '/src/image/circleBlue.svg'
+         this.whoIsPlaying.src = 'src/image/circleBlue.svg'
          
          if (Object.keys(this.playerOne.moves).length >= 3) {
             let win = this.checkWinner(this.wonPossibilities, this.playerOne.moves)
             
             if (win[0]) {
-               this.sybolsModal.forEach(element => element.src = '/src/image/crossBlue.svg')
+               this.sybolsModal.forEach(element => element.src = 'src/image/crossBlue.svg')
                line.style = win[1].css
                this.ticTacToe.classList.add('blur')
                this.modal.style.display = 'flex'
@@ -124,12 +124,12 @@ class GamePlay {
          this.playerTurn = true
          this.playerTwo.moves[currentTarget.dataset.area] = 'O'
          currentTarget.classList.add('oMark', 'clicked')
-         this.whoIsPlaying.src = '/src/image/crossBlue.svg'
+         this.whoIsPlaying.src = 'src/image/crossBlue.svg'
 
          if (Object.keys(this.playerTwo.moves).length >= 3) {
             let win = this.checkWinner(this.wonPossibilities, this.playerTwo.moves)
             if (win[0]) { 
-               this.sybolsModal.forEach(element => element.src = '/src/image/circleBlue.svg')
+               this.sybolsModal.forEach(element => element.src = 'src/image/circleBlue.svg')
                line.style = win[1].css
                this.ticTacToe.classList.add('blur')
                this.modal.style.display = 'flex'
@@ -169,7 +169,7 @@ class GamePlay {
 
    continue({currentTarget}){
       this.start()
-      this.whoIsPlaying.src = '/src/image/crossBlue.svg'
+      this.whoIsPlaying.src = 'src/image/crossBlue.svg'
       this.playerTurn = true
       this.modal.style.display = 'none'
       this.ticTacToe.classList.remove('blur')
